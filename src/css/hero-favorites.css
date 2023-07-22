@@ -51,6 +51,9 @@
   gap: 10px;
   border-radius: 8px;
   background: var(--accent-color);
+  border: none;
+  /* position: absolute; */
+  margin: 0 16px 16px auto;
 }
 
 .kz-favorite-recipes {
@@ -66,6 +69,7 @@
   font-weight: 600;
   line-height: 1.29;
   text-transform: uppercase;
+  padding-bottom: 8px;
 }
 
 .kz-favorite-description {
@@ -83,14 +87,31 @@
 .favorite-text-btn {
   display: flex;
   flex-direction: column;
+  margin: 214px 16px 16px;
 
 }
 
 .kz-favorite-rating-btn {
-  display: flex;
+  position: relative;
 
 }
 
-/* .kz-card-favorite {
+
+
+.kz-card-favorite {
+  position: relative;
+}
+
+.kz-btn-icon{
+  background: none;
+  border: none;
+  padding: 0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* .kz-favorite-icon {
+  fill: black;
   
-} */
+}  */
