@@ -26,7 +26,8 @@ export class BackendAPI {
   // Перелік подій(майстер-класів)
   searchMasterClass() {
     return axios.get(`${this.#BASE_URL}events`);
-  } // const backendReturnData = new BackendAPI();
+  }
+  // const backendReturnData = new BackendAPI();
   // const resp = backendReturnData.searchMasterClass()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
@@ -34,7 +35,8 @@ export class BackendAPI {
   // Перелік категорій (рецептів)
   searchListCategories() {
     return axios.get(`${this.#BASE_URL}categories`);
-  } // const backendReturnData = new BackendAPI();
+  }
+  // const backendReturnData = new BackendAPI();
   // const resp = backendReturnData. searchListCategories()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
@@ -56,7 +58,7 @@ export class BackendAPI {
   // backendReturnData.limit = 6 (должна соответствовать текущей пагинации?);
   // backendReturnData.time = из Filter.time (все рецепты до указанного времени включительно?);
   // backendReturnData.ingredient = из Filter.ingredient.ID;
-  // backendReturnData.category = из Filter.Area.name;
+  // backendReturnData.area = из Filter.Area.name;
   // const resp = backendReturnData.searchFilterRecipes()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
@@ -85,8 +87,7 @@ export class BackendAPI {
 
   // Детальна інформація про рецепт
   searchRecipeID() {
-    //tasty-treats-backend.p.goit.global/api/recipes/ recipeID
-    https: return axios.get(`${this.#BASE_URL}recipes/${this.recipeID}`);
+    return axios.get(`${this.#BASE_URL}recipes/${this.recipeID}`);
   }
   // const backendReturnData = new BackendAPI();
   // backendReturnData.recipeID = ID при клике на рецепт;
@@ -115,8 +116,8 @@ export class BackendAPI {
   // Додавання рейтингу окремому рецепту
   passRating() {
     return axios.patch(
-      // tasty-treats-backend.p.goit.global/api/recipes/ recipeID /rating
-      `${this.#BASE_URL}recipes/${this.recipeID}/rating`, this.userRatings
+      `${this.#BASE_URL}recipes/${this.recipeID}/rating`,
+      this.userRatings
     );
     // const backendReturnData = new BackendAPI();
     // backendReturnData.recipeID = ID при клике на рецепт;
@@ -130,10 +131,7 @@ export class BackendAPI {
 
   // Додавання замовлення
   passOrder() {
-    return axios.post(
-      //tasty-treats-backend.p.goit.global/api/orders
-      `${this.#BASE_URL}orders/add`,this.userOrder
-    );
+    return axios.post(`${this.#BASE_URL}orders/add`, this.userOrder);
     // const backendReturnData = new BackendAPI();
 
     //   backendReturnData.userOrder = {
