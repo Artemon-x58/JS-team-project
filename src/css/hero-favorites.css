@@ -1,0 +1,48 @@
+.kz-btn-favorite-recipes {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.kz-btn-favorite-recipes button {
+  color: rgba(5, 5, 5, 0.3);
+  /* font-size: 14px;
+  font-style: normal;
+  font-weight: 500; */
+  line-height: 1.29;
+
+  display: flex;
+  padding: 14px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  border-radius: 15px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+}
+.kz-btn-favorite-recipes button:active {
+  background: var(--accent-color);
+  color: var(--boody-bg);
+}
+
+.kz-btn-favorite-recipes button:last-child {
+  margin-right: 20px;
+}
+
+.kz-btn-favorite-recipes button:first-child {
+  width: 132px;
+}
+
+.kz-btn-see-recipe {
+  color: var(--boody-bg);
+  font-size: 12px;
+  /* font-style: normal;
+  font-weight: 500; */
+  line-height: normal;
+  display: flex;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--accent-color);
+}
