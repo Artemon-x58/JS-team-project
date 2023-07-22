@@ -116,7 +116,7 @@ export class BackendAPI {
   passRating() {
     return axios.patch(
       // tasty-treats-backend.p.goit.global/api/recipes/ recipeID /rating
-      `${this.#BASE_URL}recipes/${this.recipeID}/rating,${this.userRatings}`
+      `${this.#BASE_URL}recipes/${this.recipeID}/rating`, this.userRatings
     );
     // const backendReturnData = new BackendAPI();
     // backendReturnData.recipeID = ID при клике на рецепт;
@@ -132,7 +132,7 @@ export class BackendAPI {
   passOrder() {
     return axios.post(
       //tasty-treats-backend.p.goit.global/api/orders
-      `${this.#BASE_URL}orders/add,${this.userOrder}`
+      `${this.#BASE_URL}orders/add`,this.userOrder
     );
     // const backendReturnData = new BackendAPI();
 
