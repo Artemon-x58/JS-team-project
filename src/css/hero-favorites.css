@@ -2,6 +2,11 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 12px;
+  margin: 40px 20px 24px;
+  /* margin-bottom: 24px; */
+  flex-wrap: wrap;
+
+  
 }
 
 .kz-btn-favorite-recipes button {
@@ -24,12 +29,13 @@
   color: var(--boody-bg);
 }
 
-.kz-btn-favorite-recipes button:last-child {
-  margin-right: 20px;
-}
+/* .kz-btn-favorite-recipes button:last-child {
+  
+} */
 
 .kz-btn-favorite-recipes button:first-child {
   width: 132px;
+  
 }
 
 .kz-btn-see-recipe {
@@ -46,3 +52,45 @@
   border-radius: 8px;
   background: var(--accent-color);
 }
+
+.kz-favorite-recipes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.kz-favorite-title {
+  color: var(--boody-bg);
+  /* text-align: center; */
+  font-weight: 600;
+  line-height: 1.29;
+  text-transform: uppercase;
+}
+
+.kz-favorite-description {
+  overflow: hidden;
+  color: var(--boody-bg);
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  width: 303px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.favorite-text-btn {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.kz-favorite-rating-btn {
+  display: flex;
+
+}
+
+/* .kz-card-favorite {
+  
+} */
