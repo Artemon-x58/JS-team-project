@@ -4,17 +4,60 @@ import axios from 'axios';
 export class BackendAPI {
   #BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
-  //   query = null;
-  //   page = 1;
-  //   per_page = 40;
+  category = null;
+  time = null;
+  area = null;
+  ingredient = null;
+  recipeID = null;
+  userRatings = {
+    rate: 1,
+    email: '',
+  };
+  recipeID = null;
+  userRatings = {
+    name: '',
+    phone: '',
+    email: '',
+    comment: '',
+  };
 
   // Перелік подій(майстер-класів)
   searchMasterClass() {
     return axios.get(`${this.#BASE_URL}events`);
   } // const backendReturnData = new BackendAPI();
-  // const data = backendReturnData.searchMasterClass();
-  // console.log(data);
+  // const resp = backendReturnData.searchMasterClass()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
 
+  // Перелік категорій (рецептів)
+  searchListCategories() {
+    return axios.get(`${this.#BASE_URL}categories`);
+  } // const backendReturnData = new BackendAPI();
+  // const resp = backendReturnData. searchListCategories()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // ????????????
+  // Перелік рецептів з фільтрацією по категорії, інгредієнту, ключовому слову, часу та районах з урахування кількості рецептів у запиті та порядкового номеру сторінки
+
+  searchFilterRecipes() {
+    //tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredient=640c2dd963a319ea671e3796 (приклад)
+    https: return axios.get(
+      `${this.#BASE_URL}recipes?category=${this.category}&page=1&limit=6&time=${
+        this.time
+      }&area=${this.area}&ingredient=${this.ingredient}`
+    );
+  }
+  // const backendReturnData = new BackendAPI();
+  // backendReturnData.category = из List.categories.name;
+  // backendReturnData.time = из Filter.time?????? в какую сторону округление в рецептах или ставить промежуток??????;
+  // backendReturnData.ingredient = из Filter.ingredient.ID;
+  // backendReturnData.category = из Filter.Area.name;
+  // const resp = backendReturnData.searchFilterRecipes()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // ????????????
   // Все рецепты, должны открываться по кнопке "All categories"
   searchAllRecipes() {
     return axios.get(`${this.#BASE_URL}recipes`);
@@ -22,6 +65,78 @@ export class BackendAPI {
 
   // не могу найти документации, чтобы понять, как можно менять параметр page и limit(perPage)
   // const backendReturnData = new BackendAPI();
-  // const data = backendReturnData.searchAllRecipes();
-  // console.log(data);
+  // const resp = backendReturnData.searchAllRecipes()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // Популярні рецепти
+  searchPopularRecipes() {
+    return axios.get(`${this.#BASE_URL}recipes/popular`);
+  } // const backendReturnData = new BackendAPI();
+  // const resp = backendReturnData.searchPopularRecipes()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // Детальна інформація про рецепт
+  searchRecipeID() {
+    //tasty-treats-backend.p.goit.global/api/recipes/ recipeID
+    https: return axios.get(`${this.#BASE_URL}recipes/${this.recipeID}`);
+  } // const backendReturnData = new BackendAPI();
+  // backendReturnData.recipeID = ID при клике на рецепт;
+  // const resp = backendReturnData.searchPopularRecipes()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // ????????????
+  // Перелік інгредієнтів (Filter.ingredient.ID)
+  searchingredients() {
+    return axios.get(`${this.#BASE_URL}ingredients`);
+  } // const backendReturnData = new BackendAPI();
+  // const resp = backendReturnData.searchingredients()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // Перелік районів (Filter.Area)
+  searchAreas() {
+    return axios.get(`${this.#BASE_URL}areas`);
+  } // const backendReturnData = new BackendAPI();
+  // const resp = backendReturnData.searchAreas()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // Додавання рейтингу окремому рецепту
+  passRating() {
+    return axios.post(
+      // tasty-treats-backend.p.goit.global/api/recipes/ recipeID /rating
+      `${this.#BASE_URL}recipes/${this.recipeID}/ratings,${this.userRatings}`
+    );
+    // const backendReturnData = new BackendAPI();
+    // backendReturnData.recipeID = ID при клике на рецепт;
+    // backendReturnData.userRatings = {
+    //   rate: из form (номер),
+    //   email: 'из form' (строка),
+  }
+  // const resp = backendReturnData.passRating()
+  // .then(resp => console.log(resp.data))
+  // .catch(console.warn);
+
+  // Додавання замовлення
+  passOrder() {
+    return axios.post(
+      //tasty-treats-backend.p.goit.global/api/orders
+      `${this.#BASE_URL}orders,${this.userOrder}`
+    );
+    // const backendReturnData = new BackendAPI();
+
+    //   backendReturnData.userOrder = {
+    //   name: 'из form' (строка),
+    //   phone: 'из form' (строка),
+    //   email: 'из form' (строка),
+    //   comment: 'из form' (строка, не обязательно к заполнению),
+    // };
+
+    // const resp = backendReturnData.passOrder()
+    // .then(resp => console.log(resp.data))
+    // .catch(console.warn);
+  }
 }
