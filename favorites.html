@@ -16,8 +16,8 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/JS-team-project/assets/popular-f426b580.js"></script>
-    <link rel="stylesheet" href="/JS-team-project/assets/popular-e16b65f8.css">
+    <script type="module" crossorigin src="/JS-team-project/assets/popular-8e253aba.js"></script>
+    <link rel="stylesheet" href="/JS-team-project/assets/popular-b26e6ee2.css">
   </head>
   <body>
     <header>
@@ -85,7 +85,51 @@
       
       
     
-    
+    <div class="modal">
+  <button type="button" class="modal-button-close" data-modal-close>
+    <svg class="modal-button-close-svg" width="24" height="24">
+      <use href="../img/symbol-defs.svg#icon-cross"></use>
+    </svg>
+  </button>
+
+  <p class="contacts-input-form-paragraf">ORDER NOW</p>
+
+  <form class="contacts-input-form">
+    <label class="modal-input-labels"
+      ><span class="modal-input-labels-text">Name</span>
+      <input
+        type="text"
+        name="username"
+        class="input-style"
+        required
+        autofocus
+      />
+    </label>
+
+    <label class="modal-input-labels"
+      ><span class="modal-input-labels-text">Phone</span>
+      <input type="phone" name="userphone" class="input-style" required />
+    </label>
+
+    <label class="modal-input-labels"
+      ><span class="modal-input-labels-text">Email</span>
+      <input type="email" name="usermail" class="input-style" required />
+    </label>
+
+    <label class="modal-input-textarea-label"
+      ><span class="modal-input-labels-text">Comment</span>
+      <textarea
+        name="comment"
+        placeholder=""
+        class="textarea-style"
+        rows="5"
+      ></textarea>
+    </label>
+
+    <button type="send" class="modal-button-send">Send</button>
+  </form>
+</div>
+
     </main>
     
   </body>
