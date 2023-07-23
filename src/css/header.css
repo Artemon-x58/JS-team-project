@@ -1,15 +1,15 @@
 :root {
-    --white-color: #ffffff;
-    --main-color: #050505;
-    --accent-color: #9BB537;
-   --star-color: #EEA10C;
-    --boody-bg: #F8F8F8;
-    --description-font-color: rgba(5, 5, 5, 0.80);
-    --trans: 250ms linear;
-    --dark-boody-bg: #161616;
-    --dark-description-font-color: rgba(255, 255, 255, 0.80);
-  }
-  
+  --white-color: #ffffff;
+  --main-color: #050505;
+  --accent-color: #9bb537;
+  --star-color: #eea10c;
+  --boody-bg: #f8f8f8;
+  --description-font-color: rgba(5, 5, 5, 0.8);
+  --trans: 250ms linear;
+  --dark-boody-bg: #161616;
+  --dark-description-font-color: rgba(255, 255, 255, 0.8);
+}
+
 .yv-header {
   padding: 20px;
 }
@@ -18,19 +18,16 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-
-
 }
 .yv-header-logo {
-  color: #050505;
+  color: var(--main-color);
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.1;
-  
 }
 .yv-header-logoone {
-  color: #9bb537;
+  color: var(--accent-color);
   text-align: center;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
@@ -38,7 +35,7 @@
   line-height: 1.1;
 }
 .yv-header-item-logo {
-  margin-right: 182px;
+  margin-right: 100px;
 }
 .yv-header-hookup {
   display: flex;
@@ -49,23 +46,25 @@
 .yv-header-menu {
   background-color: transparent;
   border: none;
+   
 }
 .yv-header-item {
   display: none;
 }
 .yv-menu-icon {
-  stroke: #050505;
+  stroke: var(--main-color);
 }
 .yv-icon-switch {
   display: none;
+  
 }
-.yv-icon-menu{
-    padding: 20px;
+.yv-icon-menu {
+  padding: 20px;
 }
 .shopping-icon {
   margin-right: 8px;
-  stroke: #050505;
-  fill: #f8f8f8;
+  stroke: var(--main-color);
+  fill: var(--boody-bg);
 }
 
 /* mobil-menu */
@@ -77,7 +76,9 @@
 
   top: 0;
   right: 0;
-  background-color: #9bb537;
+  background-color: var(--accent-color);
+  transition: var(--trans);
+
 }
 .yv-mobil-menu {
   padding: 20px;
@@ -97,23 +98,21 @@
   text-align: center;
   margin-top: 16px;
   margin-bottom: 16px;
-  
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.11;
-  color: #ffffff;
-  
+  color: var(--white-color);
 }
 
 .yv-mobil-home {
-  color: #ffffff;
+  color: var(--white-color);
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-
   font-weight: 500;
 }
 .yv-mobil-favorites {
-  color: #f8f8f8;
+  color: var(--boody-bg);
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -125,7 +124,7 @@
   justify-content: center;
   margin-left: auto;
   background-color: transparent;
-  stroke: #f8f8f8;
+  stroke: var(--boody-bg);
   border: none;
 
   cursor: pointer;
@@ -142,13 +141,12 @@
     margin-right: 182px;
   }
 }
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 768px) {
   .conteiner {
     max-width: 768px;
-   
   }
-  .is-open{
-    display:none;
+  .yv-mobil-menu {
+    display: none;
   }
   .yv-header {
     padding: 30px;
@@ -163,8 +161,7 @@
     display: block;
     margin-left: 16px;
   }
-  .yv-header-logo {
-  }
+
   .yv-header-item-logo {
     margin-right: 217px;
     margin-left: 203px;
@@ -172,16 +169,17 @@
 
   .yv-icon-menu {
     display: none;
+
   }
   .yv-header-link-home {
-    color: #9bb537;
+    color: var(--accent-color);
     font-family: Inter;
     font-size: 12px;
 
     font-weight: 500;
   }
   .yv-header-link-favorites {
-    color: #050505;
+    color: var(--main-color);
     font-family: Inter;
     font-size: 12px;
 
@@ -189,17 +187,23 @@
   }
   .yv-icon-switch {
     display: block;
-    width: 46px;
-    height: 20px;
+    
+  }
+  .yv-menu-icon {
+    stroke: none;
+    
+    width: 60px;
+    height: 56px;
+    /* border-radius: 60px;
+    box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.6); */
   }
 }
 @media screen and (min-width: 1200px) {
   .conteiner {
     max-width: 1280px;
   }
-  .yv-header{
-    padding: 40px  100px;
-
+  .yv-header {
+    padding: 40px 100px;
   }
   .yv-header-item-logo {
     margin-right: 400px;
