@@ -1,14 +1,14 @@
 console.log('how are you');
 
-import { BackendAPI } from './tasty-backend-api';
+// import { BackendAPI } from './tasty-backend-api';
 
 // const backendReturnData = new BackendAPI();
 // backendReturnData.recipeID = '6462a8f74c3d0ddd28897fb8';
 // backendReturnData.userRatings = {
 //   rate: 4,
-//   email: 'anton@gmail.com',
+//   email: 'test@gmail.com',
 // };
-// backendReturnData.userRatings = {
+// backendReturnData.userOrder = {
 //   name: 'Ivetta',
 //   phone: '+380000000000',
 //   email: 'test@gmail.com',
