@@ -8,3 +8,5 @@ import './js/test';
 import './js/tasty-backend-api';
 import './js/mobile-menu';
 import './js/popular';
+
+import './js/dark';
