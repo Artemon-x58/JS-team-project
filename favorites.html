@@ -16,8 +16,8 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/JS-team-project/assets/style-de3df762.js"></script>
-    <link rel="stylesheet" href="/JS-team-project/assets/style-72fba740.css">
+    <script type="module" crossorigin src="/JS-team-project/assets/style-c1eb17b2.js"></script>
+    <link rel="stylesheet" href="/JS-team-project/assets/style-5fe197d2.css">
   </head>
   <body>
     <header>
@@ -87,7 +87,51 @@
 
       
       
-    
+    <div class="add-rating-backdrop">
+  <div class="add-rating-modal">
+    <svg
+      id="add-rating-close-btn"
+      class="add-rating-close-icon"
+      width="20"
+      height="20"
+    >
+      <use href="/JS-team-project/assets/symbol-defs-d525f767.svg#icon-close-x"></use>
+    </svg>
+    <h3 class="add-rating-title">Rating</h3>
+
+    <form class="add-rating-form">
+      <div class="add-rating-flex-container">
+        <p class="js-rating-choosed">0.0</p>
+        <fieldset class="starability-slot">
+          <input type="radio" id="star5" name="rating" value="5" required />
+          <label for="star5" title="Outstanding"></label>
+
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" title="Excellent"></label>
+
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" title="Good"></label>
+
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" title="Fair"></label>
+
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1" title="Poor"></label>
+        </fieldset>
+      </div>
+
+      <input
+        required
+        type="email"
+        name="email"
+        class="add-rating-email"
+        placeholder="Enter email"
+      />
+      <button type="submit" class="add-rating-submit-btn">Send</button>
+    </form>
+  </div>
+</div>
+
     <div class="modal">
   <button type="button" class="modal-button-close" data-modal-close>
     <svg class="modal-button-close-svg" width="24" height="24">
