@@ -8,14 +8,8 @@ import './js/test';
 import './js/tasty-backend-api';
 import './js/mobile-menu';
 import './js/popular';
-
-
-
-
-
-
+import './js/modal-rating';
 
 import './js/categories';
 
-
-import './js/modal-order'
+import './js/modal-order';
