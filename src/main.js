@@ -16,3 +16,6 @@ import './js/popular';
 
 
 import './js/categories';
+
+
+import './js/modal-order'

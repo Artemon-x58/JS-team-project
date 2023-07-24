@@ -14,14 +14,15 @@
         type="text"
         name="username"
         class="input-style"
-        required
-        autofocus
+        required minlength="2"
+          pattern="^[a-zA-Z]+$"
       />
     </label>
 
     <label class="modal-input-labels"
       ><span class="modal-input-labels-text">Phone</span>
-      <input type="phone" name="userphone" class="input-style" required />
+      <input type="phone" name="userphone" class="input-style" required pattern="\+380[0-9]{9}"
+       />
     </label>
 
     <label class="modal-input-labels"
@@ -36,9 +37,10 @@
         placeholder=""
         class="textarea-style"
         rows="5"
+        required minlength="2"
       ></textarea>
     </label>
 
-    <button type="send" class="modal-button-send">Send</button>
+    <button type="submit" class="modal-button-send">Send</button>
   </form>
 </div>
