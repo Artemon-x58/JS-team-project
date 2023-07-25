@@ -13,7 +13,7 @@ import './js/hero-home';
 import './js/categories';
 
 import './js/modal-order';
-
+import './js/filters';
 
 
 
