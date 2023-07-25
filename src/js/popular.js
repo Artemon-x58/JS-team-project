@@ -1,52 +1,50 @@
-import { BackendAPI } from './tasty-backend-api'; 
+import { BackendAPI } from './tasty-backend-api';
 
-const api = new BackendAPI();
-const popularList = document.querySelector('.js-popular-list');
-
-document.addEventListener("DOMContentLoaded", onReload);
-
-function onReload(){
-  generatePopularRecipeListMarkup()
-    .then(markup => {
-      if(markup === undefined) {
-        popularList.innerHTML = '<p>No popular recipes found.</p>';
-        return;
-      }
-      updateRecipeList(markup);
-    })
-    .catch(onError);
+function debounce(func, delay) {
+  let timerId;
+  return function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
 
-function generatePopularRecipeListMarkup(){
-    return api.searchPopularRecipes()
-      .then(res => {
-        return res.data;
-      })
-      .then(popularRecipes =>
-        popularRecipes.reduce((markup, recipeCard) => markup + renderPopularRecipeMarkup(recipeCard), ''))
-      .catch(error => {
-        console.error("Error fetching popular recipes: ", error);
+
+function createRecipePopular(description, preview, title) {
+  const popularBox = document.querySelector(".popular-box");
+  const markup = `
+    <div class="popular-wrapper">
+      <img src="${preview}" alt="${title}">
+      <div class="popular-box-text">
+        <h3 class="popular-name">${title}</h3>
+        <p class="popular-description">${description}</p>
+      </div>
+    </div>`;
+  popularBox.insertAdjacentHTML("beforeend", markup);
+}
+
+
+function showPopularRecipes() {
+  const popularBox = document.querySelector(".popular-box");
+  popularBox.innerHTML = "";
+
+  const backendReturnDataPop = new BackendAPI();
+  backendReturnDataPop.searchPopularRecipes()
+    .then(resp => {
+      const recipes = resp.data;
+      const numContainers = window.innerWidth >= 768 ? 4 : 2;
+
+     
+      recipes.slice(0, numContainers).forEach(({ description, preview, title }) => {
+        createRecipePopular(description, preview, title);
       });
-  }
-  
-
-
-function renderPopularRecipeMarkup({title, description, _id, preview}){
-  return `<li class="recip-item" id="${_id}">
-  <img class="recip-img" src="${preview}" alt="${title}" width="64"/>
-  <div class="recip-content">
-    <h3 class="recip-heading">${title}</h3>
-    <p class="recip-short-descr">${description}</p>
-  </div>
-</li>`;
-}
-
-function updateRecipeList(markup){
-  popularList.insertAdjacentHTML('beforeend', markup);
-}
-
-function onError(error){
-  popularList.innerHTML = `<p>Error loading popular recipes: ${error.message}</p>`;
+    })
+    .catch(console.warn);
 }
 
 
+window.addEventListener('resize', debounce(showPopularRecipes, 250));
+
+
+showPopularRecipes();
