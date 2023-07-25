@@ -6,28 +6,28 @@ export class BackendAPI {
 
   page = 1;
   limit = 6;
-  category = null;
-  time = null;
-  area = null;
-  ingredient = null;
-  recipeID = null;
+  category = '';
+  title = '';
+  time = '';
+  area = '';
+  ingredient = '';
+  recipeID = "6462a8f74c3d0ddd28898040";
   userRatings = {
-    rate: 1,
+    rate: 5,
     email: '',
   };
-  recipeID = null;
-  userRatings = {
-    name: '',
-    phone: '',
-    email: '',
-    comment: '',
-  };
+  // recipeID = null;
+  // userRatings = {
+  //   name: '',
+  //   phone: '',
+  //   email: '',
+  //   comment: '',
+  // };
 
   // Перелік подій(майстер-класів)
   searchMasterClass() {
     return axios.get(`${this.#BASE_URL}events`);
-  }
-  // const backendReturnData = new BackendAPI();
+  } // const backendReturnData = new BackendAPI();
   // const resp = backendReturnData.searchMasterClass()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
@@ -35,8 +35,7 @@ export class BackendAPI {
   // Перелік категорій (рецептів)
   searchListCategories() {
     return axios.get(`${this.#BASE_URL}categories`);
-  }
-  // const backendReturnData = new BackendAPI();
+  } // const backendReturnData = new BackendAPI();
   // const resp = backendReturnData. searchListCategories()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
@@ -49,7 +48,7 @@ export class BackendAPI {
         this.page
       }&limit=${this.limit}&time=${this.time}&area=${this.area}&ingredient=${
         this.ingredient
-      }`
+      }&title=${this.title}`
     );
   }
   // const backendReturnData = new BackendAPI();
@@ -58,16 +57,19 @@ export class BackendAPI {
   // backendReturnData.limit = 6 (должна соответствовать текущей пагинации?);
   // backendReturnData.time = из Filter.time (все рецепты до указанного времени включительно?);
   // backendReturnData.ingredient = из Filter.ingredient.ID;
-  // backendReturnData.area = из Filter.Area.name;
+  // backendReturnData.category = из Filter.Area.name;
   // const resp = backendReturnData.searchFilterRecipes()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
 
   // Все рецепты, должны открываться по кнопке "All categories" и при поиске по наименованию из фильтра?
+  
   searchAllRecipes() {
-    return axios.get(
-      `${this.#BASE_URL}recipes?page=${this.page}&limit=${this.limit}`
-    );
+    const limit = getLimitFilters();
+
+  return axios.get(
+    `${this.#BASE_URL}recipes?page=${this.page}&limit=${limit}`
+  );
   }
   // backendReturnData.page = 1 (с неё начинаем пагинацию);
   // backendReturnData.limit = 6 (количество рецептов на странице);
@@ -78,6 +80,7 @@ export class BackendAPI {
 
   // Популярні рецепти
   searchPopularRecipes() {
+    // const limit = getLimitPopular()
     return axios.get(`${this.#BASE_URL}recipes/popular`);
   }
   // const backendReturnData = new BackendAPI();
@@ -87,7 +90,8 @@ export class BackendAPI {
 
   // Детальна інформація про рецепт
   searchRecipeID() {
-    return axios.get(`${this.#BASE_URL}recipes/${this.recipeID}`);
+    //tasty-treats-backend.p.goit.global/api/recipes/ recipeID
+    https: return axios.get(`${this.#BASE_URL}recipes/${this.recipeID}`);
   }
   // const backendReturnData = new BackendAPI();
   // backendReturnData.recipeID = ID при клике на рецепт;
@@ -116,8 +120,8 @@ export class BackendAPI {
   // Додавання рейтингу окремому рецепту
   passRating() {
     return axios.patch(
-      `${this.#BASE_URL}recipes/${this.recipeID}/rating`,
-      this.userRatings
+      // tasty-treats-backend.p.goit.global/api/recipes/ recipeID /rating
+      `${this.#BASE_URL}recipes/${this.recipeID}/rating`, this.userRatings
     );
     // const backendReturnData = new BackendAPI();
     // backendReturnData.recipeID = ID при клике на рецепт;
@@ -131,7 +135,10 @@ export class BackendAPI {
 
   // Додавання замовлення
   passOrder() {
-    return axios.post(`${this.#BASE_URL}orders/add`, this.userOrder);
+    return axios.post(
+      //tasty-treats-backend.p.goit.global/api/orders
+      `${this.#BASE_URL}orders/add,${this.userOrder}`
+    );
     // const backendReturnData = new BackendAPI();
 
     //   backendReturnData.userOrder = {
@@ -145,4 +152,23 @@ export class BackendAPI {
     // .then(resp => console.log(resp.data))
     // .catch(console.warn);
   }
+
+  
 }
+function getLimitFilters() {
+  if (window.innerWidth < 768) { // Мобильные устройства
+    return 6;
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) { // Планшеты
+    return 8;
+  } else { // Десктопные устройства
+    return 9;
+  }
+}
+
+// function getLimitPopular() {
+//   if (window.innerWidth < 768) { // Мобильные устройства
+//     return 2;
+//   }  // Десктопные устройства
+//     return 4;
+    
+// }

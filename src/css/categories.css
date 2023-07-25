@@ -10,10 +10,11 @@ min-width: 176px;
 height: 50px;
 padding: 14px 29px;
 border-radius: 15px;
-border: 1px solid rgba(5, 5, 5, 0.20);
+border: transparent;
 margin-bottom: 24px;
+background-color: var(--accent-color);
 
-    color: rgba(5, 5, 5, 0.50);;
+    color: var(--boody-bg);
     font-size: 18px;
 font-weight: 500;
 line-height: normal;
@@ -24,6 +25,13 @@ line-height: normal;
     background-color: var(--accent-color);
     border-color: var(--accent-color);
 }
+
+.categories-btn.categories-btn-disable {
+    background-color: var(--boody-bg);
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    color: rgba(5, 5, 5, 0.20);
+}
+
 
 .categories-wrapper {
     display: flex;
@@ -62,6 +70,9 @@ line-height: 1.25; /* 125% */
 .categories-list-btn:hover,
 .categories-list-btn:focus {
     color: var(--accent-color);
+}
+.categories-box {
+    padding-top: 102px;
 }
 
 @media screen and (min-width: 768px) {
