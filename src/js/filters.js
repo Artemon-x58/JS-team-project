@@ -112,28 +112,37 @@ function createRecipeContainers(numContainers, _id, title, description, rating, 
         <h2 class="filters-title-recipe">${title}</h2>
         <p class="filters-description-recipe">${description}</p>
         <div class="filters-rating-wrap">
-          <p class="filters-rating-recipe">${rating}</p>
-          <svg class="filters-icon-rating-recipe-1">
-            <use href="../img/symbol-defs.svg#icon-star"></use>
-          </svg>
-          <svg class="filters-icon-rating-recipe-2">
-            <use href="../img/symbol-defs.svg#icon-star"></use>
-          </svg>
-          <svg class="filters-icon-rating-recipe-3">
-            <use href="../img/symbol-defs.svg#icon-star"></use>
-          </svg>
-          <svg class="filters-icon-rating-recipe-4">
-            <use href="../img/symbol-defs.svg#icon-star"></use>
-          </svg>
-          <svg class="filters-icon-rating-recipe-5">
-            <use href="../img/symbol-defs.svg#icon-star"></use>
-          </svg>
-          <button class="filters-btn-recipe" type="button">See recipe</button>
-        </div>
+  <p class="filters-rating-recipe">${rating}</p>
+  <svg class="filters-icon-rating-recipe-1 ${getRatingColorClass(rating, 1)}">
+    <use href="../img/symbol-defs.svg#icon-star"></use>
+  </svg>
+  <svg class="filters-icon-rating-recipe-2 ${getRatingColorClass(rating, 2)}">
+    <use href="../img/symbol-defs.svg#icon-star"></use>
+  </svg>
+  <svg class="filters-icon-rating-recipe-3 ${getRatingColorClass(rating, 3)}">
+    <use href="../img/symbol-defs.svg#icon-star"></use>
+  </svg>
+  <svg class="filters-icon-rating-recipe-4 ${getRatingColorClass(rating, 4)}">
+    <use href="../img/symbol-defs.svg#icon-star"></use>
+  </svg>
+  <svg class="filters-icon-rating-recipe-5 ${getRatingColorClass(rating, 5)}">
+    <use href="../img/symbol-defs.svg#icon-star"></use>
+  </svg>
+  <button class="filters-btn-recipe" type="button">See recipe</button>
+</div>
       </div>`;
 contParentCard.insertAdjacentHTML("beforeend", murkup)
     }
   }
+
+  function getRatingColorClass(rating, stars) {
+    if (rating >= stars) {
+      return "filters-icon-rating-yellow-" + stars;
+    } else {
+      return "filters-icon-rating-black";
+    }
+  }
+  
 
   function combineContainers() {
     if (window.innerWidth >= 768) {
