@@ -13,3 +13,13 @@ import './js/modal-rating';
 import './js/categories';
 
 import './js/modal-order';
+
+
+
+
+
+
+
+
+
+import './js/hero-home'
