@@ -1,8 +1,21 @@
 import debounce from "lodash.debounce";
-
+import 'tui-pagination';
+import Pagination from 'tui-pagination';
 import { BackendAPI } from './tasty-backend-api';
 
 import axios from "axios";
+
+
+const backendReturnDataFiltersForm = new BackendAPI();
+
+
+// let pagination1 = new Pagination('tui-pagination-container', {
+//   totalItems: 0,
+//   itemsPerPage: 0,
+//   visiblePages: 3,
+// });
+
+
 
 
 
@@ -41,7 +54,7 @@ const iconRating5 = document.querySelector(".filters-icon-rating-recipe-5");
 const btnSeeRecipe = document.querySelector(".filters-btn-recipe");
 
 
-const backendReturnDataFiltersForm = new BackendAPI();
+
 
 
 
@@ -52,35 +65,35 @@ const formFiltr = document.querySelector(".filters-form")
 
 
 
-const mediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1200px)');
+// const mediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1200px)');
 
 
-function handleMediaQueryChange(event) {
-  if (event.matches) {
-    filtersBoxTimeArea.removeChild(areaLabel)
-    filtersBoxTimeArea.insertAdjacentElement("afterend", areaLabel)
+// function handleMediaQueryChange(event) {
+//   if (event.matches) {
+//     filtersBoxTimeArea.removeChild(areaLabel)
+//     filtersBoxTimeArea.insertAdjacentElement("afterend", areaLabel)
 
-    backendReturnDataFiltersForm.limit = 8;
-    console.log(backendReturnDataFiltersForm.limit);
+//     backendReturnDataFiltersForm.limit = 8;
+//     console.log(backendReturnDataFiltersForm.limit);
   
-  } else if (window.matchMedia('(min-width: 1200px)').matches) {
+//   } else if (window.matchMedia('(min-width: 1200px)').matches) {
  
-    backendReturnDataFiltersForm.limit = 9;
-    console.log(backendReturnDataFiltersForm.limit);
+//     backendReturnDataFiltersForm.limit = 9;
+//     console.log(backendReturnDataFiltersForm.limit);
  
-  } else {
-    formFiltr.removeChild(areaLabel);
-    filtersBoxTimeArea.insertAdjacentElement("beforeend", areaLabel)
+//   } else {
+//     formFiltr.removeChild(areaLabel);
+//     filtersBoxTimeArea.insertAdjacentElement("beforeend", areaLabel)
 
-    backendReturnDataFiltersForm.limit = 6;
-    console.log(backendReturnDataFiltersForm.limit);
+//     backendReturnDataFiltersForm.limit = 6;
+//     console.log(backendReturnDataFiltersForm.limit);
     
-  }
-}
+//   }
+// }
 
-mediaQuery.addListener(handleMediaQueryChange);
+// mediaQuery.addListener(handleMediaQueryChange);
 
-handleMediaQueryChange(mediaQuery);
+// handleMediaQueryChange(mediaQuery);
 
 
 
@@ -128,6 +141,33 @@ function createOptionsIngredients (id, name) {
 
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
 
+const divPagination = document.querySelector("#tui-pagination-container")
+
+function madeFirstPagination (newTotalItems, newItemsPerPage) {
+  
+    
+  
+  backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    
+     newItemsPerPage = backendReturnDataFiltersForm.limit;
+   newTotalItems = res.data.totalPages * res.data.perPage;
+    const pagination1 = new Pagination('tui-pagination-container', {
+      totalItems: newTotalItems,
+      itemsPerPage: newItemsPerPage,
+      visiblePages: 3,
+    });
+    pagination1.on('beforeMove', evt => {
+      console.log(evt);
+    });
+  })
+}
+// madeFirstPagination()
+
+
+
+
+
+
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
@@ -135,8 +175,16 @@ function updateQuantityCards() {
   //
   contParentCard.innerHTML = '';
 backendReturnDataFiltersForm.searchAllRecipes().then(res => {
+  
+  madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+  
+  
+console.log(res.data)
+  
+  
+  
     
-    // console.log(res.data.results);
+  
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         // console.log(title, description, rating);
         // console.log(_id)
@@ -145,6 +193,7 @@ backendReturnDataFiltersForm.searchAllRecipes().then(res => {
         
           
     })
+    
     const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
 // console.log(iconsHeartActive);
 iconsHeartActive.forEach(icon => {
@@ -155,6 +204,14 @@ iconsHeartActive.forEach(icon => {
     console.error('Произошла ошибка при запросе:', error);
 });
 }
+
+
+
+
+
+
+
+
 
 function makeHeartActive (cardId, icon) {
 const localLibrary = localStorage.getItem("favoritiesRecipes")
@@ -170,7 +227,7 @@ if(localLibrary) {
 }
 }
 makeHeartActive()
-
+updateQuantityCards();
 function createRecipeContainers(numContainers, _id, title, description, rating, preview, category) {
     for (let i = 0; i < numContainers; i++) {
         
@@ -200,7 +257,8 @@ function createRecipeContainers(numContainers, _id, title, description, rating, 
   </svg>
   <button class="filters-btn-recipe" type="button">See recipe</button>
 </div>
-      </div>`;
+      </div>
+      `;
 contParentCard.insertAdjacentHTML("beforeend", murkup)
 
     }
@@ -211,7 +269,7 @@ contParentCard.insertAdjacentHTML("beforeend", murkup)
 
 
 
-  updateQuantityCards();
+ 
 
   function getRatingColorClass(rating, stars) {
     if (rating >= stars) {
@@ -269,10 +327,17 @@ function makeMurkup (category) {
 function sortingCategory (category) {
   btnAllCategories.classList.add("categories-btn-disable")
   contParentCard.innerHTML = '';
-  axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&page=${
+  axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${backendReturnDataFiltersForm.category}&page=${
     backendReturnDataFiltersForm.page
   }&limit=${backendReturnDataFiltersForm.limit}`).then(res => {
-    // console.log(res.data.results)
+
+
+    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+    
+
+
+
+    // console.log(res.data.perPage)
     backendReturnDataFiltersForm.category = category;
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category)
@@ -295,6 +360,9 @@ selectIngredients.addEventListener("change", (e) => {
   contParentCard.innerHTML = '';
   // console.log(backendReturnDataFiltersForm.category)
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+
+    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+
     // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category);
@@ -314,6 +382,11 @@ selectArea.addEventListener("change", (e) => {
   backendReturnDataFiltersForm.area = e.target.value;
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+
+
+    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+
+
     // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category);
@@ -334,6 +407,9 @@ selectTime.addEventListener("change", (e) => {
   backendReturnDataFiltersForm.time = parseInt(e.target.value, 10);
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+
+    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+
     // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category);
@@ -358,6 +434,7 @@ const handleSearchInput = debounce(() => {
     backendReturnDataFiltersForm.title = searchText;
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+      madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
       // console.log(res)
       res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         createRecipeContainers(1, _id, title, description, rating, preview, category);
@@ -375,6 +452,7 @@ iconsHeartActive.forEach(icon => {
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.title = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+      
       // console.log(res)
       res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         createRecipeContainers(1, _id, title, description, rating, preview, category);
@@ -456,14 +534,3 @@ const urlForPreview = parentSvgHeart.style.backgroundImage;
 
 
 
-
-
-
-
-// contParentCard.addEventListener("click", e => {
-//   console.log(e.target.parentNode.parentNode.id)
-//   backendReturnDataFiltersForm.recipeID = e.target.parentNode.parentNode.id
-//   backendReturnDataFiltersForm.searchRecipeID().then(res => {
-//     console.log(res.data)
-//   }) 
-// })

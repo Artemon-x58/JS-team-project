@@ -4,6 +4,7 @@ import axios from 'axios';
 export class BackendAPI {
   #BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
+
   page = 1;
   limit = 6;
   category = '';
@@ -31,6 +32,14 @@ export class BackendAPI {
   // const resp = backendReturnData.searchMasterClass()
   // .then(resp => console.log(resp.data))
   // .catch(console.warn);
+
+
+searchCategoryName () {
+  return axios.get(`${this.#BASE_URL}recipes?category=${backendReturnDataFiltersForm.category}&page=${
+    this.page
+  }&limit=${this.limit}`)
+}
+
 
   // Перелік категорій (рецептів)
   searchListCategories() {

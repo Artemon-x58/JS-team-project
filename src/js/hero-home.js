@@ -1,103 +1,57 @@
-// 'use strict';
-import axios from 'axios';
+// import Swiper from 'swiper';
+// // import Swiper styles
+// import 'swiper/css';
+import { BackendAPI } from './tasty-backend-api';
+const heroSlider = new BackendAPI();
 
-export class BackendAPI {
-  #BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
-  page = 1;
-  limit = 6;
-  category = null;
-  time = null;
-  area = null;
-  ingredient = null;
-  recipeID = null;
-  userRatings = {
-    name: '',
-    phone: '',
-    email: '',
-    comment: '',
-  };
 
-  // Перелік подій(майстер-класів)
-  searchMasterClass() {
-    return axios.get(`${this.#BASE_URL}events`);
-  }
+const swiperWrapper = document.querySelector(".swiper-wrapper")
+
+
+heroSlider.searchMasterClass().then( res => {
+    
+    res.data.forEach(({cook, topic}) => {
+        
+        createMurkupSlider(cook.imgWebpUrl, topic.name, topic.area, topic.previewWebpUrl
+            )
+        
+    })
+    
+})
+
+function createMurkupSlider (src, name, area, urlEat) {
+    const murkup = `<div class="img-slider swiper-slide">
+    <div class="image-slider_image img-slider-one" style="background-image: url('${src}'); background-position: center ; background-size: cover;"></div>
+    <div class="image-slider_image img-slider-two" style="background-image: url('${urlEat}'); background-position: center ; background-size: contain; background-repeat: no-repeat;">
+    <h2 class="title">${name}</h2>
+  <p class="country">${area}</p></div>
+    <div class="image-slider_image img-slider-three" style="background-image: url('${urlEat}'); background-position: center center ;"></div>
+  </div>`
+  swiperWrapper.insertAdjacentHTML("beforeend", murkup)
 }
 
-const backendReturnData = new BackendAPI();
-backendReturnData.searchMasterClass()
-  .then(resp => {
-    const events = resp.data; // Отриманий масив даних
-    //const imgSliderImages = document.querySelectorAll('.img-slider .image-slider_image img'); // Всі зображення в слайдері
-    const fotoSliderImages = document.querySelectorAll('.foto-slider');
-    const previewSliderImages = document.querySelectorAll('.preview-slider');
-    const mealSliderImages = document.querySelectorAll('.meal-slider');
-    const textOnImage = document.querySelector('.textOnImageTS');
-    const mealOrigin = document.querySelector('.mealOriginTS');
-
-    // Проходимося по кожному зображенню і замінюємо його src на URL зображення з масиву даних
-    fotoSliderImages.forEach((img, index) => {
-        img.src = events[index].cook.imgUrl; // Припустимо, що дані містять поле imageURL з URL зображення
-        //img.alt = events[index].cook.name; // Припустимо, що дані містять поле name з назвою події
-    });
-    previewSliderImages.forEach((img, index) => {
-        img.src = events[index].topic.previewUrl; 
-       // img.alt = events[index].topic.name;
-    });
-    mealSliderImages.forEach((img, index) => {
-        img.src = events[index].topic.imgUrl; 
-        //img.alt = events[index].topic.name;
-    });
-
-    // --------------------Доробити картку їжі на другому слайді
-    textOnImage.forEach((element, index) => {
-        element.textContent = events[index].topic.name;
-    });
-    mealOrigin.forEach((element, index) => {
-        element.textContent = events[index].topic.area;
-    });
-  })
-  .catch(console.warn);
 
 
-
-
-
-
-//import { BackendAPI } from './tasty-backend-api';
-//import axios from "axios";
-
-// import Swiper from 'swiper';
-
-// import 'swiper/css';
-
-// --------
-// import Swiper from 'swiper';
-// import { Navigation, Pagination } from 'swiper/modules';
-// // import Swiper and modules styles
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-
-// // ---------
-
-// const { default: Swiper } = require("swiper");
 
 const swiper = new Swiper('.swiper-container', {
-    //slider settings
-    slidersPerViev: 3,
+    // Настройки слайдера
+    // slidesPerView: 1,
     spaceBetween: 20,
-    loop: true,
+    // loop: true,
     spaceBetween: 10,
 
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        type: 'bullets',
     },
 
     grabCursor: true,
-    // slidesPerView: 3,
-    //spaceBetween: 30,
-})
+    slidesPerView: 0.8,
+    // spaceBetween: 30,
+  });
 
+
+
+
+  
