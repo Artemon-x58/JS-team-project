@@ -171,12 +171,14 @@ margin-left: auto;
 margin-bottom: 176px;
 display: block;
 
+cursor: pointer;
 fill: transparent;
 stroke: var(--boody-bg);
 width: 22px;
 height: 22px;
 }
 .filters-icon-heart-toggle {
+  cursor: pointer;
   fill: var(--boody-bg);
 }
 
@@ -297,11 +299,20 @@ background: rgba(5, 5, 5, 0.18);
 
 .filters-icon-rating-red-5 use {
   fill: #EEA10C;
+  
 }
 
-
+/* .filters-box-parent .filters-box-child:nth-child(n + 7) {
+  display: none;
+} */
 
 @media screen and (min-width: 768px) {
+  /* .filters-box-parent .filters-box-child:nth-child(n + 7) {
+      display: block;
+    }
+    .filters-box-parent .filters-box-child:nth-child(n + 9) {
+      display: none;
+    } */
   .filters-form {
       display: flex;
       flex-direction: row;
@@ -328,7 +339,8 @@ background: rgba(5, 5, 5, 0.18);
       /* top: 15px; */
       /* top: 0; */
       right: 0;
-      margin: 0 0 14 auto;
+      /* margin: 0 0 14 auto; */
+     margin-left: auto;
       height: 16px;
   }
   .filters-form {
@@ -341,6 +353,7 @@ background: rgba(5, 5, 5, 0.18);
   flex-wrap: wrap;
   margin-left: auto;
   gap: 16px;
+  /* justify-content: center; */
 }
 .filters-dox-cards {
 }
@@ -394,3 +407,14 @@ height: 14px;
 
 
 }
+
+
+
+@media screen and (min-width: 1200px) {
+  /* .filters-box-parent .filters-box-child:nth-child(n) {
+      display: block;
+    } */
+.filters-box-parent {
+justify-content: center;
+}
+  }
