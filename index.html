@@ -25,9 +25,9 @@
 />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     
-    <script type="module" crossorigin src="/JS-team-project/assets/index-915e7a49.js"></script>
-    <link rel="modulepreload" crossorigin href="/JS-team-project/assets/style-30bd233a.js">
-    <link rel="stylesheet" href="/JS-team-project/assets/style-e2148b91.css">
+    <script type="module" crossorigin src="/JS-team-project/assets/index-cd858be8.js"></script>
+    <link rel="modulepreload" crossorigin href="/JS-team-project/assets/style-b2431025.js">
+    <link rel="stylesheet" href="/JS-team-project/assets/style-7857cc3c.css">
     <link rel="stylesheet" href="/JS-team-project/assets/index-50601c1a.css">
   </head>
   <body>
@@ -115,6 +115,7 @@
       <div class="filters-box-time-area">
       <label class="filters-label-time" for="time"><span class="filters-span-time">Time</span>
           <select class="filters-select-time" name="time" id="time">
+            <option value="Select time">Select time</option>
               <option value="5">5 min</option>
   <option value="10">10 min</option>
   <option value="15">15 min</option>
@@ -142,11 +143,15 @@
           </select>
       </label>
       <label class="filters-label-area" for="area"><span class="filters-span-area">Area</span>
-          <select class="filters-select-area" name="area" id="area"></select>
+          <select class="filters-select-area" name="area" id="area">
+            <option value="Select area">Select area</option>
+          </select>
       </label>
   </div>
       <label class="filters-label-ingredients" for="ingredients"><span class="filters-span-ingredients">Ingredients</span>
-          <select class="filters-select-ingredients" name="ingredients" id="ingredients"></select>
+          <select class="filters-select-ingredients" name="ingredients" id="ingredients">
+            <option value="Select ingedients">Select ingedients</option>
+          </select>
       </label>
      
   </form>
@@ -155,15 +160,17 @@
        <button class="filters-reset-btn"><svg class="filters-icon-reset">
           <use href="../img/symbol-defs.svg#icon-cross"></use>
       </svg><span class="filters-btn-span">Reset the filter</span></button>
+      <div class="no-results">
+        <svg class="no-results-icon">
+            <use href="/JS-team-project/assets/symbol-defs-8e7828d8.svg#icon-nothing"></use>
+        </svg>
+        <p class="no-results-text">Sorry, but no recipes were found matching your filters. Please select other filters</p>
+    </div>
       <div class="filters-box-parent">
-        <!-- <div class="no-results">
-            <svg class="no-results-icon">
-                <use href="./img/symbol-defs.svg#icon-nothing"></use>
-            </svg>
-            <p class="no-results-text">Sorry, but no recipes were found matching your filters.</p> -->
+       
         </div>
         <div id="tui-pagination-container" class="tui-pagination"></div>
-      </div>
+      
       <!-- <div class="filters-box-child">
           <svg class="filters-icon-heart">
               <use href="../img/symbol-defs.svg#icon-heart"></use>
