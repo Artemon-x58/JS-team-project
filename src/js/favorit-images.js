@@ -1,12 +1,24 @@
 const allRecipesEl = document.querySelector('.main-btn');
 const galleryListEl = document.querySelector('.categories-gallery');
 const categoriesBtnsEls = document.querySelector('.categories-btn-pn');
+const gallaryFull = document.querySelector('.favorit-gallary-full');
+const gallaryNull = document.querySelector('favorit-gallary-null');
+const heroImg = document.querySelector('.hero-favorites');
+
+heroImg.hidden = false;
 
 const parsedRecipes = JSON.parse(localStorage.getItem('favoritiesRecipes'));
 
 galleryListEl.innerHTML = createRecipeContainers(parsedRecipes);
 
-console.log(galleryListEl.children.length);
+if (galleryListEl.children.length === 0) {
+  if (window.innerWidth >= 768) {
+    heroImg.hidden = true;
+  }
+  heroImg.hidden = false;
+  gallaryFull.hidden = true;
+  gallaryNull.hidden = false;
+}
 
 allRecipesEl.classList.add('btn-active');
 allRecipesEl.setAttribute('disabled', '');
@@ -31,7 +43,7 @@ function createRecipeContainers(array) {
         rating,
         preview,
         category,
-      }) => `<div id="${_id}" data-category="${category}" class="filters-box-child grid-item" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
+      }) => `<div id="${_id}" data-category="${category}" class="grid-item" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
         <svg class="filters-icon-heart">
             <use href="../img/symbol-defs.svg#icon-heart"></use>
         </svg>
@@ -105,3 +117,55 @@ function categoriesBtns(els) {
     )
     .join('');
 }
+
+console.log(galleryListEl);
+
+galleryListEl.addEventListener('click', e => {
+  // console.log(e.target.parentNode)
+  const svgHeart = e.target.parentNode;
+  svgHeart.classList.toggle('filters-icon-heart-toggle');
+
+  const parentSvgHeart = svgHeart.parentNode;
+  const iconHeart = parentSvgHeart.querySelector('.filters-icon-heart');
+  const titleCard = parentSvgHeart.querySelector('.filters-title-recipe');
+  const descriptionCard = parentSvgHeart.querySelector(
+    '.filters-description-recipe'
+  );
+  const numberRatingCard = parentSvgHeart.querySelector(
+    '.filters-rating-recipe'
+  );
+  const data = parentSvgHeart.getAttribute('data-category');
+  // console.log(parentSvgHeart)
+  const urlForPreview = parentSvgHeart.style.backgroundImage;
+  // console.log(parentSvgHeart)
+  const parentSvgHeaartData = {
+    _id: parentSvgHeart.id,
+    title: titleCard.textContent,
+    description: descriptionCard.textContent,
+    rating: numberRatingCard.textContent,
+    preview: urlForPreview.match(/url\(['"]?([^'"]+)['"]?\)/)[1],
+    category: data,
+  };
+
+  if (svgHeart.classList.contains('filters-icon-heart-toggle')) {
+    const isRecipeAlreadyAdded = favoritiesRecipes.some(
+      item => item._id === parentSvgHeaartData._id
+    );
+    if (!isRecipeAlreadyAdded) {
+      favoritiesRecipes.push(parentSvgHeaartData);
+      localStorage.setItem(
+        'favoritiesRecipes',
+        JSON.stringify(favoritiesRecipes)
+      );
+    }
+    // favoritiesRecipes.push(parentSvgHeaartData)
+  } else {
+    favoritiesRecipes = favoritiesRecipes.filter(
+      item => item._id !== parentSvgHeaartData._id
+    );
+    localStorage.setItem(
+      'favoritiesRecipes',
+      JSON.stringify(favoritiesRecipes)
+    );
+  }
+});
