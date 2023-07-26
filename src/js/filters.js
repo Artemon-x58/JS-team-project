@@ -20,6 +20,35 @@ const backendReturnDataFiltersForm = new BackendAPI();
 
 
 
+
+// function updateLimitBasedOnWindowWidth() {
+//   if (window.matchMedia('(max-width: 677px)').matches) {
+//     backendReturnDataFiltersForm.limit = 6;
+//     console.log(6)
+//   } else if (window.matchMedia('(min-width: 678px) and (max-width: 1199px)').matches) {
+//     backendReturnDataFiltersForm.limit = 8;
+//     console.log(8)
+//   } else {
+//     backendReturnDataFiltersForm.limit = 9;
+//     console.log(9)
+//   }
+// }
+
+// updateLimitBasedOnWindowWidth();
+
+// // Добавляем обработчик для события изменения размера окна
+// window.addEventListener('resize', updateLimitBasedOnWindowWidth);
+
+
+
+
+
+
+
+
+
+
+
 const gallery = document.querySelector(".categories-wrapper")
 
 axios.get(`https://tasty-treats-backend.p.goit.global/api/categories`).then(res => {
@@ -142,12 +171,19 @@ function createOptionsIngredients (id, name) {
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
 
 const divPagination = document.querySelector("#tui-pagination-container")
+const noResults = document.querySelector(".no-results")
+console.log(divPagination)
 
-function madeFirstPagination (newTotalItems, newItemsPerPage) {
-  
-    
-  
+function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    if(quantity <= 1) {
+      divPagination.style.display = "none"
+      
+    }
+    else {
+      
+      divPagination.style.display = "unset"
+    }
     
      newItemsPerPage = backendReturnDataFiltersForm.limit;
    newTotalItems = res.data.totalPages * res.data.perPage;
@@ -171,12 +207,20 @@ function madeFirstPagination (newTotalItems, newItemsPerPage) {
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
+  selectTime.selectedIndex = 0;
+  selectArea.selectedIndex = 0;
+  selectIngredients.selectedIndex = 0;
+  inputSearch.value = "";
+  backendReturnDataFiltersForm.title = '';
+  backendReturnDataFiltersForm.time = '';
+  backendReturnDataFiltersForm.area = '';
+  backendReturnDataFiltersForm.ingredient = '';
+  
   btnAllCategories.classList.remove("categories-btn-disable")
-  //
   contParentCard.innerHTML = '';
 backendReturnDataFiltersForm.searchAllRecipes().then(res => {
   
-  madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+  madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
   
   
 console.log(res.data)
@@ -327,22 +371,22 @@ function makeMurkup (category) {
 function sortingCategory (category) {
   btnAllCategories.classList.add("categories-btn-disable")
   contParentCard.innerHTML = '';
-  axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${backendReturnDataFiltersForm.category}&page=${
-    backendReturnDataFiltersForm.page
-  }&limit=${backendReturnDataFiltersForm.limit}`).then(res => {
+  backendReturnDataFiltersForm.category = category;
+  backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
-
-    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+    madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
     
-
-
-
-    // console.log(res.data.perPage)
-    backendReturnDataFiltersForm.category = category;
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category)
       const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
 // console.log(iconsHeartActive);
+
+
+
+
+
+
+
 iconsHeartActive.forEach(icon => {
   // console.log(icon.parentNode.id)
   makeHeartActive(icon.parentNode.id, icon)
@@ -354,14 +398,21 @@ iconsHeartActive.forEach(icon => {
 
 selectIngredients.addEventListener("change", (e) => {
   btnAllCategories.classList.add("categories-btn-disable")
+  if(e.target.firstElementChild.value === e.target.value) {
+    backendReturnDataFiltersForm.ingredient = '';
+    console.log(e.target.firstElementChild.value);
+console.log(e.target.value)
+  }
+  else {
   backendReturnDataFiltersForm.ingredient = e.target.value;
+}
   console.log(e.target.value)
   console.log(backendReturnDataFiltersForm.ingredient)
   contParentCard.innerHTML = '';
   // console.log(backendReturnDataFiltersForm.category)
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
-    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+    madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
     // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
@@ -378,13 +429,20 @@ iconsHeartActive.forEach(icon => {
 
 selectArea.addEventListener("change", (e) => {
   btnAllCategories.classList.add("categories-btn-disable")
-  console.log(e.target.value)
+
+  if(e.target.firstElementChild.value === e.target.value) {
+    backendReturnDataFiltersForm.area = '';
+    console.log(e.target.firstElementChild.value);
+console.log(e.target.value)
+  }
+  else {
   backendReturnDataFiltersForm.area = e.target.value;
+}
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
-
-    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+    
+    madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
 
     // console.log(res)
@@ -404,11 +462,20 @@ iconsHeartActive.forEach(icon => {
 selectTime.addEventListener("change", (e) => {
   btnAllCategories.classList.add("categories-btn-disable")
   console.log(e.target.value)
+
+  if(e.target.firstElementChild.value === e.target.value) {
+    backendReturnDataFiltersForm.time = '';
+    console.log(e.target.firstElementChild.value);
+console.log(e.target.value)
+  }
+  else {
   backendReturnDataFiltersForm.time = parseInt(e.target.value, 10);
+}
+  
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
-    madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+    madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
     // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
@@ -434,7 +501,7 @@ const handleSearchInput = debounce(() => {
     backendReturnDataFiltersForm.title = searchText;
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-      madeFirstPagination(res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+      madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
       // console.log(res)
       res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         createRecipeContainers(1, _id, title, description, rating, preview, category);

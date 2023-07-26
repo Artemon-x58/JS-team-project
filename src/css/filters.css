@@ -302,6 +302,22 @@ background: rgba(5, 5, 5, 0.18);
   
 }
 
+.no-results {
+  display: none;
+}
+
+.no-results-icon {
+  display: block;
+  width: 68px;
+  height: 58px;
+  margin: 70px auto 15px;
+}
+.no-results-text {
+
+text-align: center;
+line-height: 1.28; /* 128.571% */
+}
+
 /* .filters-box-parent .filters-box-child:nth-child(n + 7) {
   display: none;
 } */
@@ -415,7 +431,20 @@ height: 14px;
   gap: 64px;
 }
 
-
+.no-results-icon {
+  display: block;
+  width: 97px;
+  height: 83px;
+  margin: 150px auto 15px;
+}
+.no-results-text {
+margin-left: auto;
+margin-right: auto;
+  width: 400px;
+text-align: center;
+font-size: 16px;
+line-height: 1.5; /* 128.571% */
+}
 
 
 }

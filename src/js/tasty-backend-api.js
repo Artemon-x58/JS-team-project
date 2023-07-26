@@ -34,13 +34,6 @@ export class BackendAPI {
   // .catch(console.warn);
 
 
-searchCategoryName () {
-  return axios.get(`${this.#BASE_URL}recipes?category=${backendReturnDataFiltersForm.category}&page=${
-    this.page
-  }&limit=${this.limit}`)
-}
-
-
   // Перелік категорій (рецептів)
   searchListCategories() {
     return axios.get(`${this.#BASE_URL}categories`);
