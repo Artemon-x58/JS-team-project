@@ -14,3 +14,5 @@ import './js/categories';
 
 import './js/modal-order';
 import './js/filters';
+
+import './js/modal-recipe';
