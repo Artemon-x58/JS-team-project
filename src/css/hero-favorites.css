@@ -34,7 +34,7 @@
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1280px) {
   .hero-favorites__image {
     background-image: url('/img/hero-favorites-desktop.jpg');
     max-width: 1080px;
