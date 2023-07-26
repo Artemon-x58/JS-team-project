@@ -27,7 +27,7 @@ const inputSearch = document.querySelector(".filters-input");
 const btnResetFilers = document.querySelector(".filters-reset-btn");
 const btnAllCategories = document.querySelector(".categories-btn")
 const contParentCard = document.querySelector(".filters-box-parent");
-const filtersBoxTimeArea = document.querySelector(".filters-box-time-area")
+
 // const contChildCard = document.querySelector(".filters-box-child");
 // const iconHeart = document.querySelector(".filters-icon-heart");
 // const titleCard = document.querySelector(".filters-title-recipe");
@@ -45,8 +45,10 @@ const backendReturnDataFiltersForm = new BackendAPI();
 
 
 
-
-
+const filtersBoxTimeArea = document.querySelector(".filters-box-time-area")
+const areaLabel = document.querySelector(".filters-label-area")
+const formFiltr = document.querySelector(".filters-form")
+// console.log(areaLabel)
 
 
 
@@ -55,7 +57,9 @@ const mediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1200px)
 
 function handleMediaQueryChange(event) {
   if (event.matches) {
-   
+    filtersBoxTimeArea.removeChild(areaLabel)
+    filtersBoxTimeArea.insertAdjacentElement("afterend", areaLabel)
+
     backendReturnDataFiltersForm.limit = 8;
     console.log(backendReturnDataFiltersForm.limit);
   
@@ -65,6 +69,8 @@ function handleMediaQueryChange(event) {
     console.log(backendReturnDataFiltersForm.limit);
  
   } else {
+    formFiltr.removeChild(areaLabel);
+    filtersBoxTimeArea.insertAdjacentElement("beforeend", areaLabel)
 
     backendReturnDataFiltersForm.limit = 6;
     console.log(backendReturnDataFiltersForm.limit);
