@@ -118,7 +118,7 @@ function createOptionsIngredients (id, name) {
 
 
 
-console.log('hi')
+
 
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
 
@@ -450,3 +450,14 @@ const urlForPreview = parentSvgHeart.style.backgroundImage;
 
 
 
+
+
+
+
+// contParentCard.addEventListener("click", e => {
+//   console.log(e.target.parentNode.parentNode.id)
+//   backendReturnDataFiltersForm.recipeID = e.target.parentNode.parentNode.id
+//   backendReturnDataFiltersForm.searchRecipeID().then(res => {
+//     console.log(res.data)
+//   }) 
+// })
