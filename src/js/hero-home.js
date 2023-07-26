@@ -32,8 +32,8 @@ backendReturnData.searchMasterClass()
     const fotoSliderImages = document.querySelectorAll('.foto-slider');
     const previewSliderImages = document.querySelectorAll('.preview-slider');
     const mealSliderImages = document.querySelectorAll('.meal-slider');
-    const textOnImageTS = document.querySelector('.textOnImageTS');
-    const mealOriginTS = document.querySelector('.mealOriginTS');
+    const textOnImage = document.querySelector('.textOnImageTS');
+    const mealOrigin = document.querySelector('.mealOriginTS');
 
     // Проходимося по кожному зображенню і замінюємо його src на URL зображення з масиву даних
     fotoSliderImages.forEach((img, index) => {
@@ -50,10 +50,10 @@ backendReturnData.searchMasterClass()
     });
 
     // --------------------Доробити картку їжі на другому слайді
-    textOnImageTS.forEach((element, index) => {
+    textOnImage.forEach((element, index) => {
         element.textContent = events[index].topic.name;
     });
-    mealOriginTS.forEach((element, index) => {
+    mealOrigin.forEach((element, index) => {
         element.textContent = events[index].topic.area;
     });
   })
