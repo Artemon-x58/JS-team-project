@@ -107,7 +107,7 @@ font-weight: 500;
 line-height: 1.16;
 }
 .filters-select-ingredients {
-min-width: 188px;
+width: 188px;
 padding: 14px 18px;
 border-radius: 15px;
 border: 1px solid rgba(5, 5, 5, 0.20);
@@ -171,12 +171,14 @@ margin-left: auto;
 margin-bottom: 176px;
 display: block;
 
+cursor: pointer;
 fill: transparent;
 stroke: var(--boody-bg);
 width: 22px;
 height: 22px;
 }
 .filters-icon-heart-toggle {
+  cursor: pointer;
   fill: var(--boody-bg);
 }
 
@@ -297,11 +299,20 @@ background: rgba(5, 5, 5, 0.18);
 
 .filters-icon-rating-red-5 use {
   fill: #EEA10C;
+  
 }
 
-
+/* .filters-box-parent .filters-box-child:nth-child(n + 7) {
+  display: none;
+} */
 
 @media screen and (min-width: 768px) {
+  /* .filters-box-parent .filters-box-child:nth-child(n + 7) {
+      display: block;
+    }
+    .filters-box-parent .filters-box-child:nth-child(n + 9) {
+      display: none;
+    } */
   .filters-form {
       display: flex;
       flex-direction: row;
@@ -328,12 +339,25 @@ background: rgba(5, 5, 5, 0.18);
       /* top: 15px; */
       /* top: 0; */
       right: 0;
-      margin: 0 0 14 auto;
+      /* margin: 0 0 14 auto; */
+     margin-left: auto;
       height: 16px;
   }
   .filters-form {
       margin-left: 32px;
   }
+  /* .filters-label-area {
+    position: absolute;
+    bottom: -200px;
+    right: 396px;
+  } */
+  .categories-box {
+    padding-top: 0;
+  }
+  /* .filters-label-ingredients {
+    margin-left: auto;
+  }
+   */
 
 .filters-box-parent {
   display: flex;
@@ -341,6 +365,7 @@ background: rgba(5, 5, 5, 0.18);
   flex-wrap: wrap;
   margin-left: auto;
   gap: 16px;
+  /* justify-content: center; */
 }
 .filters-dox-cards {
 }
@@ -394,3 +419,31 @@ height: 14px;
 
 
 }
+
+
+
+@media screen and (min-width: 1200px) {
+  /* .filters-box-parent .filters-box-child:nth-child(n) {
+      display: block;
+    } */
+.filters-box-parent {
+justify-content: center;
+}
+.filters-box-child  {
+  width: 250px;
+  height: 287px;
+}
+.filters-icon-heart {
+  margin-bottom: 128px;
+}
+.filters-form {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.filters-dox-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  }

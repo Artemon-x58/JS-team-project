@@ -1,0 +1,254 @@
+:root {
+    --white-color: #ffffff;
+    --main-color: #050505;
+    --accent-color: #9BB537;
+   --star-color: #EEA10C;
+    --boody-bg: #F8F8F8;
+    --description-font-color: rgba(5, 5, 5, 0.80);
+    --trans: 250ms linear;
+    --dark-boody-bg: #161616;
+    --dark-description-font-color: rgba(255, 255, 255, 0.80);
+  }
+  
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background-color: var(--boody-bg);
+}
+
+  /* Reset styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+  }
+  
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  a {
+    color: currentColor;
+    text-decoration: none;
+    outline: transparent;
+  }
+  
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    outline: transparent;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 375px;
+    margin: 0 auto;
+  }
+
+  .hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .container {
+      max-width: 768px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .container {
+      max-width: 1280px;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+
+
+.hero-heading {
+    margin-bottom: 14px;
+    
+    font-size: 26px;
+    
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.hero-span {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.hero-text {
+    margin-bottom: 28px;
+    
+    line-height: 1.28;
+}
+
+.hero-btn {
+    margin-bottom: 48px;
+    min-width: 111px;
+    height: 37px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    padding: 10px 20px;
+    background-color: transparent;
+    transition: background-color var(--trans), color var(--trans);
+}
+    
+.hero-btn:hover,
+.hero-btn:focus {
+    background-color: var(--accent-color);
+    color: var(--boody-bg);
+    
+}
+    
+/* ------------------------------------------------------------swiper */
+    
+.hero-slider.swiper-container {
+    overflow: hidden;
+}
+    
+.hero-slider img {
+    max-width: 100%;
+}
+    
+.img-slider.swiper-slide {
+    display: flex;
+    /* min-width: 0; */
+    gap: 8px;
+    overflow: hidden;
+}
+    
+.image-slider_image {
+    text-align: center;
+}
+    
+.foto-slider {
+    width: 80px;
+    height: 280px;
+    /* overflow: hidden; */
+    object-fit: cover;
+    border-radius: 15px;
+}
+    
+.preview-slider {
+    width: 200px;
+    height: 280px;
+    /* overflow: hidden; */
+
+    border-radius: 15px;
+
+
+    border-radius: 15px;
+    border: 1px solid rgba(155, 181, 55, 0.30);
+    background: var(--main-color); 
+}
+    
+.meal-slider {
+    width: 200px;
+    height: 280px;
+    /* overflow: hidden; */
+    object-fit: cover;
+    border-radius: 15px;
+
+    border-radius: 15px;
+    border: 1px solid rgba(155, 181, 55, 0.30);
+    background: var(--main-color);
+}
+    
+.hero-slider .swiper-pagination {
+    bottom: unset;
+}
+/* --------------------------------------------------------------------------- */
+.swiper-pagination {
+    margin-bottom: 40px;
+}
+    
+.hero-slider .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    line-height: 0.72;
+    font-size: 24px;
+    background-color: #000;
+    opacity: 1;
+    }
+    
+.hero-slider .swiper-pagination-bullet-active {
+    background-color: var(--accent-color);
+}
+    
+.img-slider.swiper-slide{
+        
+}
+    
+.hero-slider .swiper-slide {
+    width: auto;
+}
+    
+    
+    
+@media screen and (min-width: 768px) {
+    .hero-heading {
+        margin-bottom: 16px;
+        width: 446px;
+    
+        font-size: 36px;
+    }
+    
+    .hero-text {
+        width: 408px;
+        margin-bottom: 32px;
+    
+        font-size: 16px;
+        line-height: 1.5;
+    }
+        
+    .hero-btn {
+        margin-bottom: 64px;
+        padding: 14px 28px;
+        min-width: 127px;
+        height: 45px;
+    }
+    
+}
+    
+@media screen and (min-width: 1200px) {
+    .container.hero-container {
+        display: flex;
+        gap: 30px;
+    }
+    
+    .hero-cont-text {
+           
+    }
+    
+}

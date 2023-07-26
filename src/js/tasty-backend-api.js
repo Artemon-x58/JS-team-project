@@ -11,7 +11,7 @@ export class BackendAPI {
   time = '';
   area = '';
   ingredient = '';
-  recipeID = "6462a8f74c3d0ddd28898040";
+  recipeID = '';
   userRatings = {
     rate: 5,
     email: '',
