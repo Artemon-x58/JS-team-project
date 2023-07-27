@@ -43,6 +43,7 @@ letter-spacing: -0.64px;
 color: var(--accent-color);
 }
 
+
 .header-icon-order-basket-btn,
 .header-icon-burger-btn {
     background-color: transparent;
@@ -53,7 +54,9 @@ color: var(--accent-color);
     stroke: var(--main-color);
     transition: stroke var(--trans);
 }
-
+.dark .header-icon-burger{
+    stroke: var(--white-color);
+}
 .header-icon-burger:hover,
 .header-icon-burger:focus {
     stroke: var(--accent-color);
@@ -64,7 +67,10 @@ color: var(--accent-color);
     fill: var(--boody-bg);
     transition: stroke var(--trans);
 }
-
+.dark .header-icon-order-basket{
+stroke: var(--white-color);
+    fill: var(--dark-boody-bg);
+}
 .header-icon-order-basket:hover,
 .header-icon-order-basket:focus {
     stroke: var(--accent-color);
@@ -260,7 +266,22 @@ margin-left: 0;
 .header-link-nav {
     font-size: 12px;
 }
+.header-link-nav{
+    color: var(--accent-color);
+}
+.dark .header-link-nav{
+    color: var(--accent-color);
+    }
+.header-link-nav-next{
+    color: var(--main-color);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
 
+}
+.dark .header-link-nav-next{
+color: var(--white-color);
+}
 }
 
 @media screen and (min-width: 1200px) {

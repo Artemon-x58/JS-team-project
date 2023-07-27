@@ -33,7 +33,31 @@
   const linkFavorites = document.querySelector(".header-link-nav-favorites");
 
 
+    document
+      .querySelector('#checkbox-btn', '#checkbox-btn-mobil')
+      .addEventListener('change', e => {
+        e.preventDefault();
+        if (localStorage.getItem('theme') === 'dark') {
+          localStorage.removeItem('theme');
+        } else {
+          localStorage.setItem('theme', 'dark');
+        }
+        addDarkTheme();
+      });
 
+    function addDarkTheme() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.querySelector('html').classList.add('dark');
+        } else {
+          document.querySelector('html').classList.remove('dark');
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    addDarkTheme();
   // linkHome.addEventListener("click", (e) => {
   //   // e.preventDefault()
   //   linkHome.classList.add("current");
@@ -45,3 +69,4 @@
   //   linkFavorites.classList.add("current");
   //   linkHome.classList.remove("current");
   // })
+  
