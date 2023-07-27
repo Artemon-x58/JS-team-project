@@ -45,10 +45,12 @@ export class BackendAPI {
   // Перелік рецептів з фільтрацією по категорії, інгредієнту, ключовому слову, часу та районах з урахування кількості рецептів у запиті та порядкового номеру сторінки
 
   searchFilterRecipes() {
+    
+    const limit = getLimitFilters(6, 8, 9);
     return axios.get(
       `${this.#BASE_URL}recipes?category=${this.category}&page=${
         this.page
-      }&limit=${this.limit}&time=${this.time}&area=${this.area}&ingredient=${
+      }&limit=${limit}&time=${this.time}&area=${this.area}&ingredient=${
         this.ingredient
       }&title=${this.title}`
     );

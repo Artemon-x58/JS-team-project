@@ -9,51 +9,6 @@ import axios from "axios";
 const backendReturnDataFiltersForm = new BackendAPI();
 
 
-// let pagination1 = new Pagination('tui-pagination-container', {
-//   totalItems: 0,
-//   itemsPerPage: 0,
-//   visiblePages: 3,
-// });
-
-
-
-const paginationNew = new Pagination('tui-pagination-container', {
-  page: 0,
-  totalItems: 0,
-  itemsPerPage: 0,
-  visiblePages: 3,
-});
-
-
-
-// function updateLimitBasedOnWindowWidth() {
-//   if (window.matchMedia('(max-width: 677px)').matches) {
-//     backendReturnDataFiltersForm.limit = 6;
-//     console.log(6)
-//   } else if (window.matchMedia('(min-width: 678px) and (max-width: 1199px)').matches) {
-//     backendReturnDataFiltersForm.limit = 8;
-//     console.log(8)
-//   } else {
-//     backendReturnDataFiltersForm.limit = 9;
-//     console.log(9)
-//   }
-// }
-
-// updateLimitBasedOnWindowWidth();
-
-// // Добавляем обработчик для события изменения размера окна
-// window.addEventListener('resize', updateLimitBasedOnWindowWidth);
-
-
-
-
-
-
-
-
-
-
-
 const gallery = document.querySelector(".categories-wrapper")
 
 axios.get(`https://tasty-treats-backend.p.goit.global/api/categories`).then(res => {
@@ -414,6 +369,8 @@ function makeMurkup (category) {
     
 
 function sortingCategory (category) {
+  loader.removeAttribute("hidden")
+  
   btnAllCategories.classList.add("categories-btn-disable")
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.category = category;
@@ -427,7 +384,7 @@ function sortingCategory (category) {
 
 
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-
+loader.setAttribute("hidden", "true")
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
     
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
@@ -451,6 +408,8 @@ iconsHeartActive.forEach(icon => {
 
 
 selectIngredients.addEventListener("change", (e) => {
+  loader.removeAttribute("hidden")
+  
   btnAllCategories.classList.add("categories-btn-disable")
   if(e.target.firstElementChild.value === e.target.value) {
     backendReturnDataFiltersForm.ingredient = '';
@@ -466,7 +425,7 @@ backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   // console.log(backendReturnDataFiltersForm.category)
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-
+loader.setAttribute("hidden", "true")
     
 
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
@@ -485,8 +444,10 @@ iconsHeartActive.forEach(icon => {
 })
 
 selectArea.addEventListener("change", (e) => {
+  loader.removeAttribute("hidden");
   btnAllCategories.classList.add("categories-btn-disable")
-
+  
+  
   if(e.target.firstElementChild.value === e.target.value) {
     backendReturnDataFiltersForm.area = '';
   }
@@ -496,48 +457,14 @@ selectArea.addEventListener("change", (e) => {
 backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-    
+    loader.setAttribute("hidden", "true")
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    paginationNew.totalItems = res.data.totalPages * res.data.perPage;
-    paginationNew.itemsPerPage = backendReturnDataFiltersForm.limit;
-    paginationNew.page = backendReturnDataFiltersForm.page;
-
-    
-    console.log(paginationNew.totalItems)                                      
-    console.log(paginationNew.itemsPerPage)
-    console.log(paginationNew.page)
-
-    // paginationNew.on('beforeMove', evt => {
-    //   console.log(paginationNew.page);
-    //   backendReturnDataFiltersForm.page = evt;
-    //   contParentCard.innerHTML = '';
-    //   console.log(backendReturnDataFiltersForm.page)
-    //   console.log('hallo')
-    //   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-    //     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
-    //       // console.log(title, description, rating);
-    //       // console.log(_id)
-    //       createRecipeContainers(1, _id, title, description, rating, preview, category);
-  
-          
-            
-    //   })
-    //   })
-
-    // });
-
-    
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
-
-    // console.log(res)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
       createRecipeContainers(1, _id, title, description, rating, preview, category);
       const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
-// console.log(iconsHeartActive);
 iconsHeartActive.forEach(icon => {
-  // console.log(icon.parentNode.id)
   makeHeartActive(icon.parentNode.id, icon)
 })
     })
@@ -545,31 +472,24 @@ iconsHeartActive.forEach(icon => {
   
 });
 
-
-
-
-paginationNew.on('beforeMove', evt => {
-  console.log(evt);
-  backendReturnDataFiltersForm.page = evt.page;
-});
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 selectTime.addEventListener("change", (e) => {
+  loader.removeAttribute("hidden")
+  
   btnAllCategories.classList.add("categories-btn-disable")
   console.log(e.target.value)
-
+  backendReturnDataFiltersForm.page = 1;
+  contParentCard.innerHTML = '';
   if(e.target.firstElementChild.value === e.target.value) {
     backendReturnDataFiltersForm.time = '';
-    console.log(e.target.firstElementChild.value);
-console.log(e.target.value)
+//     console.log(e.target.firstElementChild.value);
+// console.log(e.target.value)
   }
   else {
-  backendReturnDataFiltersForm.time = parseInt(e.target.value, 10);
+  backendReturnDataFiltersForm.time = e.target.value;
+  
 }
-
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-
+loader.setAttribute("hidden", "true")
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
     // console.log(res)
