@@ -1,92 +1,91 @@
 .categories-container {
-    /* margin-top: 102px; */
-    
+  /* margin-top: 102px; */
+  padding-left: 0;
 }
 
 .categories-btn {
-transition: color var(--trans), background-color var(--trans);
+  transition: color var(--trans), background-color var(--trans);
 
-min-width: 176px;
-height: 50px;
-padding: 14px 29px;
-border-radius: 15px;
-border: transparent;
-margin-bottom: 24px;
-background-color: var(--accent-color);
+  min-width: 176px;
+  height: 50px;
+  padding: 14px 29px;
+  border-radius: 15px;
+  border: transparent;
+  margin-bottom: 24px;
+  background-color: var(--accent-color);
 
-    color: var(--boody-bg);
-    font-size: 18px;
-font-weight: 500;
-line-height: normal;
+  color: var(--boody-bg);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
 }
 .categories-btn:hover,
 .categories-btn:focus {
-    color: var(--boody-bg);
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+  color: var(--boody-bg);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .categories-btn.categories-btn-disable {
-    background-color: var(--boody-bg);
-    border: 1px solid rgba(5, 5, 5, 0.20);
-    color: rgba(5, 5, 5, 0.20);
+  background-color: var(--boody-bg);
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  color: rgba(5, 5, 5, 0.2);
 }
 
-
 .categories-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    height: 198px;
-    width: 100%;
-    overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 198px;
+  width: 100%;
+  overflow-y: scroll;
 
-    scrollbar-width: 2px; /* "auto" или "thin" (зависит от браузера) */
+  scrollbar-width: 2px; /* "auto" или "thin" (зависит от браузера) */
   scrollbar-color: tomato;
 }
 
 .categories-wrapper::-webkit-scrollbar {
-    width: 8px; /* Ширина скроллбара */
-  }
+  width: 8px; /* Ширина скроллбара */
+}
 
-  .categories-wrapper::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-background: rgba(5, 5, 5, 0.18);
-  }
+.categories-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: rgba(5, 5, 5, 0.18);
+}
 
 .categories-list-btn {
-transition: color var(--trans);
+  transition: color var(--trans);
 
-    background-color: var(--boody-bg);
-    border: none;
-    text-align: left;
+  background-color: var(--boody-bg);
+  border: none;
+  text-align: left;
 
-    color: rgba(5, 5, 5, 0.30);
-font-size: 16px;
-font-weight: 500;
-line-height: 1.25; /* 125% */
+  color: rgba(5, 5, 5, 0.3);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25; /* 125% */
 }
 
 .categories-list-btn:hover,
 .categories-list-btn:focus {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
 .categories-box {
-    padding-top: 102px;
+  padding-top: 102px;
 }
 
 @media screen and (min-width: 768px) {
-    .categories-container {
-        padding: 0;
-        margin-top: 0;
-    }
-    .categories-wrapper {
-        height: 416px;
-    }
-.categories-box {
+  .categories-container {
+    padding: 0;
+    margin-top: 0;
+  }
+  .categories-wrapper {
+    height: 416px;
+  }
+  .categories-box {
     width: 176px;
-}
-.categories-btn {
+  }
+  .categories-btn {
     font-size: 17px;
-}
+  }
 }

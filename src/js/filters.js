@@ -51,7 +51,7 @@ function createOptionsArea (id, name) {
 const option = document.createElement("option");
 option.id = id;
 option.value = name;
-option.textContent = name;
+  option.textContent = name; 
 selectArea.appendChild(option);
 }
 
