@@ -17,6 +17,9 @@
 }
 
 .grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 335px;
   height: 335px;
   padding: 16px;
@@ -65,6 +68,16 @@
 .categories-btn-pn::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: rgba(5, 5, 5, 0.18);
+}
+
+.favorit-icon-heart {
+  margin-left: auto;
+  display: block;
+  cursor: pointer;
+  fill: var(--boody-bg);
+  stroke: var(--boody-bg);
+  width: 22px;
+  height: 22px;
 }
 
 .favorit-gallary-null {
