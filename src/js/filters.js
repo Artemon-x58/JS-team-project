@@ -315,8 +315,8 @@ updateQuantityCards();
 function createRecipeContainers(numContainers, _id, title, description, rating, preview, category) {
     for (let i = 0; i < numContainers; i++) {
         
-    const linkStar = "./img/symbol-defs.svg#icon-star";
-    const linkHeart = "./img/symbol-defs.svg#icon-heart"
+    const linkStar = "../img/symbol-defs.svg#icon-star";
+    const linkHeart = "../img/symbol-defs.svg#icon-heart"
     const murkup = `<div id="${_id}" data-category="${category}" class="filters-box-child" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
         <svg class="filters-icon-heart">
             <use href="${linkHeart}"></use>
