@@ -1,6 +1,8 @@
 import { BackendAPI } from './tasty-backend-api';
 
 const galleryDiv = document.querySelector('.filters-box-parent');
+const popularDiv = document.querySelector('.popular-box');
+
 const backdropRecipe = document.querySelector('.modal-recipe-backdrop');
 const exitBtn = document.querySelector('.ab-exit-btn');
 
@@ -15,6 +17,11 @@ const hashTagList = document.querySelector('.ab-hashtag-list');
 const recipeDescription = document.querySelector('.ab-recipe-description');
 
 const starContainer = document.querySelector('.ab-star-container');
+
+const buba = document
+  .querySelector('.ab-recipe-description')
+  .closest('.ab-recipe-description');
+console.log(buba, 'i love niggers');
 
 // const seeRecipe = document.querySelector('.filters-btn-recipe');
 
@@ -77,46 +84,70 @@ function colorStars(starRating) {
   }
 }
 
-export function handleSeeRecipe(event) {
-  if (event.target.classList.contains('filters-btn-recipe')) {
-    backdropRecipe.toggleAttribute('data-hidden');
-    document.body.style.overflow = 'hidden';
+function partialHandleSeeRecipe(event, closestIdContainer) {
+  backdropRecipe.toggleAttribute('data-hidden');
+  document.body.style.overflow = 'hidden';
 
-    if (event.target.parentNode.parentNode.id === '') {
+  if (event.target.parentNode.parentNode.id === '') {
+    if (closestIdContainer !== null) {
+      console.log(closestIdContainer.id, 'bubka bibka');
+
+      dataOptionsObj.recipeID = closestIdContainer.id;
+    } else {
       dataOptionsObj.recipeID =
         event.target.parentNode.parentNode.parentNode.id;
-    } else {
-      dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
     }
+  } else {
+    dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
+  }
 
-    dataOptionsObj
-      .searchRecipeID()
-      .then(res => {
-        if (event.target.parentNode.parentNode.id === '') {
-          backdropRecipe.id = event.target.parentNode.parentNode.parentNode.id;
+  dataOptionsObj
+    .searchRecipeID()
+    .then(res => {
+      if (event.target.parentNode.parentNode.id === '') {
+        if (closestIdContainer !== null) {
+          backdropRecipe.id = closestIdContainer.id;
         } else {
-          backdropRecipe.id = event.target.parentNode.parentNode.id;
+          backdropRecipe.id = event.target.parentNode.parentNode.parentNode.id;
         }
+      } else {
+        backdropRecipe.id = event.target.parentNode.parentNode.id;
+      }
 
-        console.log(backdropRecipe.id);
+      console.log(backdropRecipe.id);
 
-        const data = res.data;
-        dishName.textContent = data.title;
-        changeVideoLink(data.youtube);
-        starRatingNumb.textContent = data.rating;
-        cookingTime.textContent = `${data.time} min`;
-        fillIngredientList(data.ingredients);
-        fillHashtagList(data.tags);
-        recipeDescription.textContent = data.instructions;
-        colorStars(data.rating);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      const data = res.data;
+      dishName.textContent = data.title;
+      changeVideoLink(data.youtube);
+      starRatingNumb.textContent = data.rating;
+      cookingTime.textContent = `${data.time} min`;
+      fillIngredientList(data.ingredients);
+      fillHashtagList(data.tags);
+      recipeDescription.textContent = data.instructions;
+      colorStars(data.rating);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+export function handleSeeRecipe(event) {
+  const closestIdContainer = event.target.closest('.popular-wrapper');
+
+  if (event.target.classList.contains('filters-btn-recipe')) {
+    partialHandleSeeRecipe(event, closestIdContainer);
+  } else if (closestIdContainer !== null) {
+    partialHandleSeeRecipe(event, closestIdContainer);
   }
 }
 
 galleryDiv?.addEventListener('click', handleSeeRecipe);
+
+popularDiv?.addEventListener('click', event => {
+  console.log('mama ya gey');
+
+  handleSeeRecipe(event);
+});
 
 // document.addEventListener('DOMContentLoaded', event => {
 //   const galleryDivFavorites = document.querySelector('.grid-item');
