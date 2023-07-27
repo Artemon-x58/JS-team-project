@@ -321,45 +321,76 @@ line-height: 1.28; /* 128.571% */
 /* .filters-box-parent .filters-box-child:nth-child(n + 7) {
   display: none;
 } */
+
+
+
+
+.tui-pagination {
+  
+margin: 14px auto -12px !important;
+
+}
+
+.tui-pagination .tui-first {
+  margin-right: 8px;
+}
+
+.tui-pagination .tui-first+.tui-prev {
+  margin-right: 24px;
+  /* font-size: 18px !important;
+font-weight: 600 !important;
+line-height: 22px !important; */
+}
+
+
 .tui-pagination .tui-first,
 .tui-pagination .tui-first+.tui-prev,
 .tui-page-btn + .tui-last,
 .tui-pagination .tui-next {
   background-color: var(--accent-color);
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  border-color: var(--accent-color) !important;
 }
-.tui-pagination .tui-first, .tui-pagination .tui-prev, .tui-pagination .tui-next, .tui-pagination .tui-last, .tui-pagination .tui-prev-is-ellip, .tui-pagination .tui-next-is-ellip {
-  width: 44px !important;
-  height: 44px !important;
-  align-items: center !important;
+
+.tui-page-btn .tui-is-disabled .tui-prev {
+  display: flex !important; 
   justify-content: center !important;
+  align-items: center !important;
+} 
+.tui-pagination .tui-is-disabled .tui-ico-first {}
+.tui-pagination .tui-is-selected, .tui-pagination strong {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #050505 !important;
 }
-
-
+.tui-pagination .tui-ico-first {}
 .tui-pagination .tui-first-child.tui-is-selected {
+  margin-right: 10px;
+font-size: 18px !important;
+font-weight: 600 !important;
+line-height: 22px !important;
+
+
   background-color: var(--accent-color);
   border: none;
-  border-left: unset;
+  border-left: unset !important;
   color: #050505;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
   /* display: block;
   align-items: center;
   justify-content: center; */
 }
 .tui-pagination .tui-next {
+  margin-left: 24px !important;
+  margin-right: 8px;
   border-radius: 50%;
   width: 44px;
   height: 44px;
   
 }
-.tui-page-btn *{
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+.tui-page-btn {
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+    border-color: rgba(5, 5, 5, 0.30) !important;
   background-color: var(--boody-bg);
   border-radius: 50%;
   width: 44px;
@@ -369,17 +400,21 @@ line-height: 1.28; /* 128.571% */
   justify-content: center !important;
  
 }
+.tui-pagination .tui-next-is-ellip {
+  border-left: initial !important;
+  margin-right: 0 !important;
+}
 .tui-pagination .tui-page-btn {
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  margin-right: 10px;
+  padding: 8px 0 6px !important;
+  border-width: 1px 1px !important;
   
+  font-size: 18px !important;
+font-weight: 600 !important;
+line-height: 22px !important;
 }
 .tui-page-btn.tui-is-disabled{
-  background-color: #050505;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  background-color: #050505 !important;
   
 }
 
