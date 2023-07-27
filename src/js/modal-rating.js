@@ -59,4 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.toggleAttribute('data-hidden');
     recipeModal.toggleAttribute('modal-margin');
   });
+
+  const closeButton = document.querySelector('.add-rating-close-btn');
+
+  closeButton.addEventListener('click', event => {
+    modal.toggleAttribute('data-hidden');
+    recipeModal.toggleAttribute('modal-margin');
+  });
 });
