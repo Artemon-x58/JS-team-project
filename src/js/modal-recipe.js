@@ -75,7 +75,7 @@ function colorStars(starRating) {
   }
 }
 
-galleryDiv.addEventListener('click', event => {
+function handleSeeRecipe(event) {
   if (event.target.classList.contains('filters-btn-recipe')) {
     backdropRecipe.toggleAttribute('data-hidden');
     document.body.style.overflow = 'hidden';
@@ -100,25 +100,56 @@ galleryDiv.addEventListener('click', event => {
         console.log(error);
       });
   }
+}
+
+galleryDiv.addEventListener('click', event => {
+  handleSeeRecipe(event);
 });
+
+// document.addEventListener('DOMContentLoaded', event => {
+//   const galleryDivFavorites = document.querySelector('.grid-item');
+
+//   console.log(galleryDivFavorites);
+
+//   galleryDivFavorites.addEventListener('click', event => {
+//     handleSeeRecipe(event);
+//   });
+// });
 
 const giveARAtingBtn = document.querySelector('.ab-give-a-rating');
 const ratingModal = document.querySelector('.add-rating-modal');
 const recipeModal = document.querySelector('.modal-recipe');
 
-giveARAtingBtn.addEventListener('click', event => {
+function toggleRatingModal() {
   ratingModal.toggleAttribute('data-hidden');
-
   recipeModal.toggleAttribute('modal-margin');
-});
+}
 
-exitBtn.addEventListener('click', event => {
+function closeRecipeModal() {
   backdropRecipe.toggleAttribute('data-hidden');
   document.body.style.overflow = 'auto';
 
   if (!ratingModal.hasAttribute('data-hidden')) {
-    ratingModal.toggleAttribute('data-hidden');
+    // ratingModal.toggleAttribute('data-hidden');
+    // recipeModal.toggleAttribute('modal-margin');
 
-    recipeModal.toggleAttribute('modal-margin');
+    toggleRatingModal();
+  }
+}
+
+giveARAtingBtn.addEventListener('click', event => {
+  // ratingModal.toggleAttribute('data-hidden');
+  // recipeModal.toggleAttribute('modal-margin');
+
+  toggleRatingModal();
+});
+
+exitBtn.addEventListener('click', event => {
+  closeRecipeModal();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeRecipeModal();
   }
 });
