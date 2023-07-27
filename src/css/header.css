@@ -70,6 +70,9 @@ color: var(--accent-color);
     stroke: var(--accent-color);
 }
 
+.active-link {
+    color: var(--accent-color);
+}
 .mobile-menu {
     
     position: fixed;

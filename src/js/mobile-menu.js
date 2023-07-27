@@ -29,19 +29,15 @@
   
 
 
-  const linkHome = document.querySelector(".header-link-nav-home");
-  const linkFavorites = document.querySelector(".header-link-nav-favorites");
+  const linkHome = document.querySelector(".header-link-home");
+  const linkFavorites = document.querySelector(".header-link-favorites");
 
 
+linkHome.addEventListener("click", e => {
+  linkHome.classList.remove("active-link")
+// .active-list
+})
 
-  // linkHome.addEventListener("click", (e) => {
-  //   // e.preventDefault()
-  //   linkHome.classList.add("current");
-  //   linkFavorites.classList.remove("current");
-  // });
-
-  // linkFavorites.addEventListener("click", (e) => {
-  //   // e.preventDefault()
-  //   linkFavorites.classList.add("current");
-  //   linkHome.classList.remove("current");
-  // })
+linkFavorites.addEventListener("click", e => {
+  linkFavorites.classList.add("active-link")
+})

@@ -195,7 +195,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
     const pagination1 = new Pagination('tui-pagination-container', {
       totalItems: newTotalItems,
       itemsPerPage: newItemsPerPage,
-      visiblePages: 3,
+      visiblePages: 2,
       page: backendReturnDataFiltersForm.page,
     });
     pagination1.on('beforeMove', evt => {
@@ -315,29 +315,30 @@ updateQuantityCards();
 function createRecipeContainers(numContainers, _id, title, description, rating, preview, category) {
     for (let i = 0; i < numContainers; i++) {
         
-    
+    const linkStar = "./img/symbol-defs.svg#icon-star";
+    const linkHeart = "./img/symbol-defs.svg#icon-heart"
     const murkup = `<div id="${_id}" data-category="${category}" class="filters-box-child" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
         <svg class="filters-icon-heart">
-            <use href="./img/symbol-defs.svg#icon-heart"></use>
+            <use href="${linkHeart}"></use>
         </svg>
         <h2 class="filters-title-recipe">${title}</h2>
         <p class="filters-description-recipe">${description}</p>
         <div class="filters-rating-wrap">
   <p class="filters-rating-recipe">${rating.toFixed(1)}</p>
   <svg class="filters-icon-rating-recipe-1 ${getRatingColorClass(rating, 1)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="${linkStar}"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-2 ${getRatingColorClass(rating, 2)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="${linkStar}"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-3 ${getRatingColorClass(rating, 3)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="${linkStar}"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-4 ${getRatingColorClass(rating, 4)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="${linkStar}"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-5 ${getRatingColorClass(rating, 5)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="${linkStar}"></use>
   </svg>
   <button class="filters-btn-recipe" type="button">See recipe</button>
 </div>
