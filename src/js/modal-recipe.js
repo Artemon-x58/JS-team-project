@@ -21,7 +21,7 @@ const starContainer = document.querySelector('.ab-star-container');
 const buba = document
   .querySelector('.ab-recipe-description')
   .closest('.ab-recipe-description');
-console.log(buba, 'i love niggers');
+
 
 // const seeRecipe = document.querySelector('.filters-btn-recipe');
 

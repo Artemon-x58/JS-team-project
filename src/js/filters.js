@@ -14,7 +14,9 @@ const categories = res.data;
     categories.forEach(category => {
         makeMurkup(category.name)
     });
-})
+}).catch((error) => {
+  console.error("Произошла ошибка при запросе:", error);
+});
 
 const gallery = document.querySelector(".categories-wrapper")
 const selectTime = document.querySelector("#time");
@@ -30,7 +32,7 @@ const loader = document.querySelector(".loader");
 const filtersBoxTimeArea = document.querySelector(".filters-box-time-area")
 const areaLabel = document.querySelector(".filters-label-area")
 const formFiltr = document.querySelector(".filters-form")
-
+const addBtnModal = document.querySelector(".ab-add-to-favorite")
 
 
 
@@ -42,7 +44,9 @@ backendReturnDataFiltersForm.searchAreas().then(res => {
     sortedArea.forEach(({_id, name}) => {
         createOptionsArea(_id, name)
     })
-})
+}).catch((error) => {
+  console.error("Произошла ошибка при запросе:", error);
+});
 
 function createOptionsArea (id, name) {
 const option = document.createElement("option");
@@ -57,7 +61,9 @@ backendReturnDataFiltersForm.searchingredients().then(res => {
     sortedIngredients.forEach(({_id, name}) => {
         createOptionsIngredients(_id, name)
     })
-})
+}).catch((error) => {
+  console.error("Произошла ошибка при запросе:", error);
+});
 
 function createOptionsIngredients (id, name) {
     const option = document.createElement("option");
@@ -68,6 +74,24 @@ function createOptionsIngredients (id, name) {
     }
 
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
+
+const mediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1280px)');
+
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    return 3
+  } else if (window.matchMedia('(min-width: 1280px)').matches) {
+    return 3
+  } else {
+    return 2
+  }
+}
+
+mediaQuery.addListener(handleMediaQueryChange);
+
+handleMediaQueryChange(mediaQuery);
+
+
 
 function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
@@ -99,7 +123,9 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
       });
 
     });
-  })
+  }).catch((error) => {
+    console.error("Произошла ошибка при запросе:", error);
+  });
 }
 
 btnAllCategories.addEventListener("click", updateQuantityCards)
@@ -257,7 +283,9 @@ iconsHeartActive.forEach(icon => {
   makeHeartActive(icon.parentNode.id, icon)
 })
     })
-  })
+  }).catch((error) => {
+    console.error("Произошла ошибка при запросе:", error);
+  });
 };
 
 
@@ -292,7 +320,9 @@ iconsHeartActive.forEach(icon => {
   makeHeartActive(icon.parentNode.id, icon)
 })
     })
-  })
+  }).catch((error) => {
+    console.error("Произошла ошибка при запросе:", error);
+  });
 })
 
 selectArea.addEventListener("change", (e) => {
@@ -329,7 +359,9 @@ iconsHeartActive.forEach(icon => {
   makeHeartActive(icon.parentNode.id, icon)
 })
     })
-  })
+  }).catch((error) => {
+    console.error("Произошла ошибка при запросе:", error);
+  });
   
 });
 
@@ -365,7 +397,9 @@ iconsHeartActive.forEach(icon => {
   makeHeartActive(icon.parentNode.id, icon)
 })
     })
-  })
+  }).catch((error) => {
+    console.error("Произошла ошибка при запросе:", error);
+  });
   
 })
 
@@ -436,8 +470,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// addBtnModal.addEventListener("click", e => {
+//   console.log(e)
+//   if( e.target.tagName !== "use" ) {
+// return
+//   }
+//   const svgHeart = e.target.parentNode;
+//   svgHeart.classList.toggle("filters-icon-heart-toggle")
+
+//   const parentSvgHeart = svgHeart.parentNode;
+// const iconHeart = parentSvgHeart.querySelector(".filters-icon-heart");
+// const titleCard = parentSvgHeart.querySelector(".filters-title-recipe");
+// const descriptionCard = parentSvgHeart.querySelector(".filters-description-recipe");
+// const numberRatingCard = parentSvgHeart.querySelector(".filters-rating-recipe");
+// const data = parentSvgHeart.getAttribute("data-category")
+// const urlForPreview = parentSvgHeart.style.backgroundImage;
+//   const parentSvgHeaartData = {
+//     _id: parentSvgHeart.id,
+//     title: titleCard.textContent,
+//     description: descriptionCard.textContent,
+//     rating: numberRatingCard.textContent,
+//     preview: urlForPreview.match(/url\(['"]?([^'"]+)['"]?\)/)[1],
+//     category: data
+//   }
+  
+//   if(svgHeart.classList.contains("filters-icon-heart-toggle")) {
+    
+//     const isRecipeAlreadyAdded = favoritiesRecipes.some(item => item._id === parentSvgHeaartData._id);
+//     if (!isRecipeAlreadyAdded) {
+//       favoritiesRecipes.push(parentSvgHeaartData);
+//       localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes));
+//     }
+//   } else {
+//     favoritiesRecipes = favoritiesRecipes.filter(item => item._id !== parentSvgHeaartData._id);
+//     localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes))
+//   }
+// }
+// );
+
 
 contParentCard.addEventListener("click", e => {
+  if( e.target.tagName !== "use" ) {
+return
+  }
   const svgHeart = e.target.parentNode;
   svgHeart.classList.toggle("filters-icon-heart-toggle")
 
