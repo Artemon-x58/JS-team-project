@@ -86,7 +86,7 @@ const iconRating3 = document.querySelector(".filters-icon-rating-recipe-3");
 const iconRating4 = document.querySelector(".filters-icon-rating-recipe-4");
 const iconRating5 = document.querySelector(".filters-icon-rating-recipe-5");
 const btnSeeRecipe = document.querySelector(".filters-btn-recipe");
-
+const loader = document.querySelector(".loader")
 
 
 
@@ -246,6 +246,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
+  loader.removeAttribute("hidden")
   selectTime.selectedIndex = 0;
   selectArea.selectedIndex = 0;
   selectIngredients.selectedIndex = 0;
@@ -259,7 +260,7 @@ function updateQuantityCards() {
   btnAllCategories.classList.remove("categories-btn-disable")
   contParentCard.innerHTML = '';
 backendReturnDataFiltersForm.searchAllRecipes().then(res => {
-  
+  loader.setAttribute("hidden", "true")
   madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
   
   
@@ -277,6 +278,7 @@ console.log(res.data)
         
           
     })
+  
     
     const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
 // console.log(iconsHeartActive);

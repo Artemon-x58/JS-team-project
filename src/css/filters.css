@@ -396,7 +396,7 @@ line-height: 22px !important;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  display: block;
+  /* display: block; */
   border: 3px solid;
   border-color:#de3500 #0000 var(--accent-color) #0000;
   border-radius: 50%;
