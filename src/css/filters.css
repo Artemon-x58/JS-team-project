@@ -386,6 +386,35 @@ line-height: 22px !important;
   height: 44px;
   
 }
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  top: 30%;
+  z-index: 1000;
+  border: 3px solid;
+  border-color:#de3500 #0000 var(--accent-color) #0000;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: 1s rotate linear infinite;
+}
+.loader:before , .loader:after{
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  border: 10px solid transparent;
+  border-bottom-color:var(--accent-color);
+  transform: translate(-10px, 19px) rotate(-35deg);
+}
+.loader:after {
+  border-color: #de3500 #0000 #0000 #0000 ;
+  transform: translate(32px, 3px) rotate(-35deg);
+}
+ @keyframes rotate {
+  100%{    transform: rotate(360deg)}
+}
 .tui-page-btn {
   border-radius: 50% !important;
   width: 44px !important;
@@ -399,6 +428,13 @@ line-height: 22px !important;
   align-items: center !important;
   justify-content: center !important;
  
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Размер контейнера спиннера */
+  width: 100px;
 }
 .tui-pagination .tui-next-is-ellip {
   border-left: initial !important;
