@@ -84,6 +84,8 @@ galleryDiv.addEventListener('click', event => {
     dataOptionsObj
       .searchRecipeID()
       .then(res => {
+        backdropRecipe.id = event.target.parentNode.parentNode.id;
+
         const data = res.data;
         dishName.textContent = data.title;
         changeVideoLink(data.youtube);
@@ -100,7 +102,23 @@ galleryDiv.addEventListener('click', event => {
   }
 });
 
+const giveARAtingBtn = document.querySelector('.ab-give-a-rating');
+const ratingModal = document.querySelector('.add-rating-modal');
+const recipeModal = document.querySelector('.modal-recipe');
+
+giveARAtingBtn.addEventListener('click', event => {
+  ratingModal.toggleAttribute('data-hidden');
+
+  recipeModal.toggleAttribute('modal-margin');
+});
+
 exitBtn.addEventListener('click', event => {
   backdropRecipe.toggleAttribute('data-hidden');
   document.body.style.overflow = 'auto';
+
+  if (!ratingModal.hasAttribute('data-hidden')) {
+    ratingModal.toggleAttribute('data-hidden');
+
+    recipeModal.toggleAttribute('modal-margin');
+  }
 });
