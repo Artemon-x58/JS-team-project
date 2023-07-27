@@ -67,7 +67,7 @@ export class BackendAPI {
   // Все рецепты, должны открываться по кнопке "All categories" и при поиске по наименованию из фильтра?
   
   searchAllRecipes() {
-    const limit = getLimitFilters();
+    const limit = getLimitFilters(6, 8, 9);
 
   return axios.get(
     `${this.#BASE_URL}recipes?page=${this.page}&limit=${limit}`
@@ -157,13 +157,14 @@ export class BackendAPI {
 
   
 }
-function getLimitFilters() {
+
+function getLimitFilters(a, b, c) {
   if (window.innerWidth < 768) { // Мобильные устройства
-    return 6;
+    return a;
   } else if (window.innerWidth >= 768 && window.innerWidth < 1280) { // Планшеты
-    return 8;
+    return b;
   } else { // Десктопные устройства
-    return 9;
+    return c;
   }
 }
 

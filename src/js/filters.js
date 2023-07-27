@@ -170,7 +170,7 @@ function createOptionsIngredients (id, name) {
     }
 
 
-
+    
 
 
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
@@ -190,8 +190,8 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
       divPagination.style.display = "unset"
     }
     
-     newItemsPerPage = backendReturnDataFiltersForm.limit;
-   newTotalItems = res.data.totalPages * res.data.perPage;
+    const newItemsPerPage = backendReturnDataFiltersForm.limit;
+  const newTotalItems = res.data.totalPages * res.data.perPage;
     const pagination1 = new Pagination('tui-pagination-container', {
       totalItems: newTotalItems,
       itemsPerPage: newItemsPerPage,
@@ -209,6 +209,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
         // madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
         
         
+
       console.log(res.data)
         
         
