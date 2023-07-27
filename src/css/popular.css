@@ -1,6 +1,10 @@
 .popular-container {
   padding-top: 40px;
   padding-bottom: 62px;
+
+  padding-left: 0;
+  padding-right: 0;
+
 }
 .popular-heading {
   margin-bottom: 20px;
@@ -16,7 +20,7 @@
   height: 67px;
   overflow: hidden;
 
-  cursor: pointer;
+
 }
 .popular-wrapper img {
   width: 64px;
@@ -30,12 +34,17 @@
 }
 .popular-name {
   margin-bottom: 8px;
-  overflow-y: scroll;
-  height: 18px;
+
+  overflow-y: hidden;
+  height: 17px;
+
   font-size: 12px;
   font-weight: 600;
   line-height: 1.28;
   text-transform: uppercase;
+
+  text-overflow: ellipsis;
+
 }
 .popular-name::-webkit-scrollbar {
   width: 8px; /* Ширина скроллбара */
@@ -51,13 +60,24 @@
   gap: 24px;
 }
 .popular-description {
-  height: 41px;
+
+  height: 35px;
+
   overflow-y: scroll;
   color: rgba(5, 5, 5, 0.8);
   text-overflow: ellipsis;
   /* white-space: normal; */
   font-size: 12px;
   line-height: 1.33;
+
+
+  overflow: hidden;
+
+  /* Скрыть колесо прокрутки */
+  scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none; /* Для IE и Edge */
+  -webkit-line-clamp: 3; /* Ограничиваем количество строк до 3 */
+
 }
 
 .popular-description::-webkit-scrollbar {
@@ -76,7 +96,8 @@
     width: 176px;
   }
   .filters-form {
-    margin-left: 32px;
+
+
   }
   .filters-main-box {
   }
@@ -89,5 +110,10 @@
   }
   .popular-description {
     font-size: 10px;
+
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
   }
 }

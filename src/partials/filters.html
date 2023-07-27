@@ -1,75 +1,106 @@
 <div class="container filters-container">
   <div class="filters-main-box">
-  <form class="filters-form" action="">
-      <label class="filters-label-search" for="search"><span class="filters-span-search">Search</span>
-          <svg class="filters-icon" width="18" height="18">
-              <use href="./img/symbol-defs.svg#icon-search"></use>
-          </svg>
-          <input class="filters-input" type="text" id="search" name="search" placeholder="Enter Text">
+    <form class="filters-form" action="">
+      <label class="filters-label-search" for="search"
+        ><span class="filters-span-search">Search</span>
+        <svg class="filters-icon" width="18" height="18">
+          <use href="./img/symbol-defs.svg#icon-search"></use>
+        </svg>
+        <input
+          class="filters-input"
+          type="text"
+          id="search"
+          name="search"
+          placeholder="Enter Text"
+        />
       </label>
       <div class="filters-box-time-area">
-      <label class="filters-label-time" for="time"><span class="filters-span-time">Time</span>
+        <label class="filters-label-time" for="time"
+          ><span class="filters-span-time">Time</span>
           <select class="filters-select-time" name="time" id="time">
             <option value="Select time">Min</option>
-              <option value="5">5 min</option>
-  <option value="10">10 min</option>
-  <option value="15">15 min</option>
-  <option value="20">20 min</option>
-  <option value="25">25 min</option>
-  <option value="30">30 min</option>
-  <option value="35">35 min</option>
-  <option value="40">40 min</option>
-  <option value="45">45 min</option>
-  <option value="50">50 min</option>
-  <option value="55">55 min</option>
-  <option value="60">60 min</option>
-  <option value="65">65 min</option>
-  <option value="70">70 min</option>
-  <option value="75">75 min</option>
-  <option value="80">80 min</option>
-  <option value="85">85 min</option>
-  <option value="90">90 min</option>
-  <option value="95">95 min</option>
-  <option value="100">100 min</option>
-  <option value="105">105 min</option>
-  <option value="110">110 min</option>
-  <option value="115">115 min</option>
-  <option value="120">120 min</option>
+            <option value="5">5 min</option>
+            <option value="10">10 min</option>
+            <option value="15">15 min</option>
+            <option value="20">20 min</option>
+            <option value="25">25 min</option>
+            <option value="30">30 min</option>
+            <option value="35">35 min</option>
+            <option value="40">40 min</option>
+            <option value="45">45 min</option>
+            <option value="50">50 min</option>
+            <option value="55">55 min</option>
+            <option value="60">60 min</option>
+            <option value="65">65 min</option>
+            <option value="70">70 min</option>
+            <option value="75">75 min</option>
+            <option value="80">80 min</option>
+            <option value="85">85 min</option>
+            <option value="90">90 min</option>
+            <option value="95">95 min</option>
+            <option value="100">100 min</option>
+            <option value="105">105 min</option>
+            <option value="110">110 min</option>
+            <option value="115">115 min</option>
+            <option value="120">120 min</option>
           </select>
-      </label>
-      <label class="filters-label-area" for="area"><span class="filters-span-area">Area</span>
+          <svg class="strelka-time" id="arrow-time">
+            <use href="../img/symbol-defs.svg#icon-strelka"></use>
+          </svg>
+        </label>
+        <label class="filters-label-area" for="area"
+          ><span class="filters-span-area">Area</span>
           <select class="filters-select-area" name="area" id="area">
             <option value="Select area">Region</option>
           </select>
+          <svg class="strelka-spisok" id="arrow-time">
+            <use href="../img/symbol-defs.svg#icon-strelka"></use>
+          </svg>
+        </label>
+      </div>
+      <label class="filters-label-ingredients" for="ingredients"
+        ><span class="filters-span-ingredients">Ingredients</span>
+        <select
+          class="filters-select-ingredients"
+          name="ingredients"
+          id="ingredients"
+        >
+          <option value="Select ingedients">Product</option>
+        </select>
+        <svg class="strelka-spisok-ing" id="arrow-time">
+          <use href="../img/symbol-defs.svg#icon-strelka"></use>
+        </svg>
       </label>
-  </div>
-      <label class="filters-label-ingredients" for="ingredients"><span class="filters-span-ingredients">Ingredients</span>
-          <select class="filters-select-ingredients" name="ingredients" id="ingredients">
-            <option value="Select ingedients">Product</option>
-          </select>
-      </label>
-     
-  </form>
+    </form>
+
 
   <div class="filters-dox-cards">
        <button class="filters-reset-btn"><svg class="filters-icon-reset">
           <use href="./img/symbol-defs.svg#icon-cross"></use>
       </svg><span class="filters-btn-span">Reset the filter</span></button>
-      <div class="no-results">
+      <div class="no-results visually-hidden">
+
         <svg class="no-results-icon">
-            <use href="./img/symbol-defs.svg#icon-nothing"></use>
+          <use href="./img/symbol-defs.svg#icon-nothing"></use>
         </svg>
-        <p class="no-results-text">Sorry, but no recipes were found matching your filters. Please select other filters</p>
+
+        <p class="no-results-text">
+          Sorry, but no recipes were found matching your filters. Please select
+          other filters
+        </p>
+      </div>
+      <span class="loader" hidden></span>
+      <div class="filters-box-parent"></div>
     </div>
-    <span class="loader" hidden></span>
+
+    <div class="pagina-pos-tabl">
+      <div id="tui-pagination-container" class="tui-pagination"></div>
+    </div>
+
+    <span class="loader"></span>
       <div class="filters-box-parent">
        
         </div>
         
   </div>
-  
-  <div id="tui-pagination-container" class="tui-pagination"></div>
-  
-  
-</div>
 </div>
