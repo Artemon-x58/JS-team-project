@@ -26,6 +26,7 @@
   right: 0; */
   margin-left: auto;
   margin-right: auto;
+  /* margin-bottom: 80px; */
   z-index: 20;
 
   width: 335px;
@@ -33,6 +34,10 @@
 
   background-color: var(--white-color);
   border-radius: 15px;
+}
+
+[modal-margin] {
+  margin-bottom: 40px;
 }
 
 .ab-exit-btn {
