@@ -16,6 +16,8 @@ const recipeDescription = document.querySelector('.ab-recipe-description');
 
 const starContainer = document.querySelector('.ab-star-container');
 
+// const seeRecipe = document.querySelector('.filters-btn-recipe');
+
 function changeVideoLink(newLink) {
   const newLinkId = newLink.split('=');
   const finalLink = `https://www.youtube.com/embed/${newLinkId[1]}`;
@@ -75,16 +77,28 @@ function colorStars(starRating) {
   }
 }
 
-function handleSeeRecipe(event) {
+export function handleSeeRecipe(event) {
   if (event.target.classList.contains('filters-btn-recipe')) {
     backdropRecipe.toggleAttribute('data-hidden');
     document.body.style.overflow = 'hidden';
 
-    dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
+    if (event.target.parentNode.parentNode.id === '') {
+      dataOptionsObj.recipeID =
+        event.target.parentNode.parentNode.parentNode.id;
+    } else {
+      dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
+    }
+
     dataOptionsObj
       .searchRecipeID()
       .then(res => {
-        backdropRecipe.id = event.target.parentNode.parentNode.id;
+        if (event.target.parentNode.parentNode.id === '') {
+          backdropRecipe.id = event.target.parentNode.parentNode.parentNode.id;
+        } else {
+          backdropRecipe.id = event.target.parentNode.parentNode.id;
+        }
+
+        console.log(backdropRecipe.id);
 
         const data = res.data;
         dishName.textContent = data.title;
@@ -102,9 +116,7 @@ function handleSeeRecipe(event) {
   }
 }
 
-galleryDiv.addEventListener('click', event => {
-  handleSeeRecipe(event);
-});
+galleryDiv?.addEventListener('click', handleSeeRecipe);
 
 // document.addEventListener('DOMContentLoaded', event => {
 //   const galleryDivFavorites = document.querySelector('.grid-item');
