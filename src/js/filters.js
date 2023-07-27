@@ -198,6 +198,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
       visiblePages: 2,
       page: backendReturnDataFiltersForm.page,
     });
+   
     pagination1.on('beforeMove', evt => {
       console.log(evt.page);
 
@@ -205,7 +206,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
       contParentCard.innerHTML = '';
       backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
   
-        madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+        // madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
         
         
       console.log(res.data)
@@ -246,7 +247,10 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   loader.removeAttribute("hidden")
+   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  contParentCard.innerHTML = '';
   selectTime.selectedIndex = 0;
   selectArea.selectedIndex = 0;
   selectIngredients.selectedIndex = 0;
@@ -258,10 +262,11 @@ function updateQuantityCards() {
   backendReturnDataFiltersForm.ingredient = '';
   
   btnAllCategories.classList.remove("categories-btn-disable")
-  contParentCard.innerHTML = '';
-backendReturnDataFiltersForm.searchAllRecipes().then(res => {
+  // contParentCard.innerHTML = '';
+backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
   loader.setAttribute("hidden", "true")
   madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+  
   
   
 console.log(res.data)
@@ -505,24 +510,24 @@ backendReturnDataFiltersForm.page = 1;
     console.log(paginationNew.itemsPerPage)
     console.log(paginationNew.page)
 
-    paginationNew.on('beforeMove', evt => {
-      console.log(paginationNew.page);
-      backendReturnDataFiltersForm.page = evt;
-      contParentCard.innerHTML = '';
-      console.log(backendReturnDataFiltersForm.page)
-      console.log('hallo')
-      backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-        res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
-          // console.log(title, description, rating);
-          // console.log(_id)
-          createRecipeContainers(1, _id, title, description, rating, preview, category);
+    // paginationNew.on('beforeMove', evt => {
+    //   console.log(paginationNew.page);
+    //   backendReturnDataFiltersForm.page = evt;
+    //   contParentCard.innerHTML = '';
+    //   console.log(backendReturnDataFiltersForm.page)
+    //   console.log('hallo')
+    //   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    //     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
+    //       // console.log(title, description, rating);
+    //       // console.log(_id)
+    //       createRecipeContainers(1, _id, title, description, rating, preview, category);
   
           
             
-      })
-      })
+    //   })
+    //   })
 
-    });
+    // });
 
     
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
@@ -564,8 +569,7 @@ console.log(e.target.value)
   else {
   backendReturnDataFiltersForm.time = parseInt(e.target.value, 10);
 }
-backendReturnDataFiltersForm.page = 1;
-  contParentCard.innerHTML = '';
+
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)

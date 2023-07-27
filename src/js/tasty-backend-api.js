@@ -6,7 +6,7 @@ export class BackendAPI {
 
 
   page = 1;
-  limit = 6;
+  limit = 9;
   category = '';
   title = '';
   time = '';
@@ -160,7 +160,7 @@ export class BackendAPI {
 function getLimitFilters() {
   if (window.innerWidth < 768) { // Мобильные устройства
     return 6;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) { // Планшеты
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) { // Планшеты
     return 8;
   } else { // Десктопные устройства
     return 9;
