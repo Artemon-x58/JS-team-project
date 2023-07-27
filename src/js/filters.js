@@ -321,7 +321,7 @@ function createRecipeContainers(numContainers, _id, title, description, rating, 
     const linkHeart = "../img/symbol-defs.svg#icon-heart"
     const murkup = `<div id="${_id}" data-category="${category}" class="filters-box-child" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
         <svg class="filters-icon-heart">
-            <use href="${linkHeart}"></use>
+            <use href="${linkHeart}icon-heart"></use>
         </svg>
         <h2 class="filters-title-recipe">${title}</h2>
         <p class="filters-description-recipe">${description}</p>
