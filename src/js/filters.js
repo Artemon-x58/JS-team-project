@@ -24,16 +24,18 @@ const inputSearch = document.querySelector(".filters-input");
 const btnResetFilers = document.querySelector(".filters-reset-btn");
 const btnAllCategories = document.querySelector(".categories-btn")
 const contParentCard = document.querySelector(".filters-box-parent");
-// const iconRating1 = document.querySelector(".filters-icon-rating-recipe-1");
-// const iconRating2 = document.querySelector(".filters-icon-rating-recipe-2");
-// const iconRating3 = document.querySelector(".filters-icon-rating-recipe-3");
-// const iconRating4 = document.querySelector(".filters-icon-rating-recipe-4");
-// const iconRating5 = document.querySelector(".filters-icon-rating-recipe-5");
-// const btnSeeRecipe = document.querySelector(".filters-btn-recipe");
-const loader = document.querySelector(".loader")
-// const filtersBoxTimeArea = document.querySelector(".filters-box-time-area")
-// const areaLabel = document.querySelector(".filters-label-area")
-// const formFiltr = document.querySelector(".filters-form")
+const divPagination = document.querySelector("#tui-pagination-container")
+const noResults = document.querySelector(".no-results");
+const loader = document.querySelector(".loader");
+const filtersBoxTimeArea = document.querySelector(".filters-box-time-area")
+const areaLabel = document.querySelector(".filters-label-area")
+const formFiltr = document.querySelector(".filters-form")
+
+
+
+
+
+
 
 backendReturnDataFiltersForm.searchAreas().then(res => {
     const sortedArea = res.data.sort((a, b) => a.name.localeCompare(b.name));
@@ -66,10 +68,6 @@ function createOptionsIngredients (id, name) {
     }
 
 // --------------------------------------------------------------ЛОГИКА ДОБАВЛЕНИЯ КАРТОЧЕК В КОНТЕЙНЕР
-
-const divPagination = document.querySelector("#tui-pagination-container")
-const noResults = document.querySelector(".no-results")
-console.log(divPagination)
 
 function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
@@ -107,6 +105,7 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
+  noResults.classList.add("visually-hidden");
   loader.removeAttribute("hidden")
 
   contParentCard.innerHTML = '';
@@ -123,6 +122,12 @@ function updateQuantityCards() {
   
   btnAllCategories.classList.remove("categories-btn-disable")
 backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+  const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
   loader.setAttribute("hidden", "true")
   madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
     res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
@@ -139,7 +144,6 @@ iconsHeartActive.forEach(icon => {
 
 function makeHeartActive (cardId, icon) {
 const localLibrary = localStorage.getItem("favoritiesRecipes")
-// console.log(localLibrary)
 if(localLibrary) {
   const parsedData = JSON.parse(localLibrary)
   parsedData.forEach(({_id}) => {
@@ -221,13 +225,13 @@ function makeMurkup (category) {
 
 
   gallery.addEventListener("click", e => {
-    console.log(e.target.textContent)
     const nameCategory = e.target.textContent;
     sortingCategory(nameCategory)
     })
   
 
 function sortingCategory (category) {
+  noResults.classList.add("visually-hidden");
   loader.removeAttribute("hidden")
   
   btnAllCategories.classList.add("categories-btn-disable")
@@ -236,6 +240,12 @@ function sortingCategory (category) {
   backendReturnDataFiltersForm.page = 1;
   
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
 loader.setAttribute("hidden", "true")
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
     
@@ -252,22 +262,25 @@ iconsHeartActive.forEach(icon => {
 
 
 selectIngredients.addEventListener("change", (e) => {
+  noResults.classList.add("visually-hidden");
   loader.removeAttribute("hidden")
   
   btnAllCategories.classList.add("categories-btn-disable")
   if(e.target.firstElementChild.value === e.target.value) {
     backendReturnDataFiltersForm.ingredient = '';
-    console.log(e.target.firstElementChild.value);
-console.log(e.target.value)
   }
   else {
   backendReturnDataFiltersForm.ingredient = e.target.value;
 }
 backendReturnDataFiltersForm.page = 1;
-  console.log(e.target.value)
-  console.log(backendReturnDataFiltersForm.ingredient)
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
 loader.setAttribute("hidden", "true")
     
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
@@ -283,6 +296,7 @@ iconsHeartActive.forEach(icon => {
 })
 
 selectArea.addEventListener("change", (e) => {
+  noResults.classList.add("visually-hidden");
   loader.removeAttribute("hidden");
   btnAllCategories.classList.add("categories-btn-disable")
   
@@ -296,6 +310,14 @@ selectArea.addEventListener("change", (e) => {
 backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+   const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
+    
+    
     loader.setAttribute("hidden", "true")
 
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
@@ -312,10 +334,10 @@ iconsHeartActive.forEach(icon => {
 });
 
 selectTime.addEventListener("change", (e) => {
+  noResults.classList.add("visually-hidden");
   loader.removeAttribute("hidden")
   
   btnAllCategories.classList.add("categories-btn-disable")
-  console.log(e.target.value)
   backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   if(e.target.firstElementChild.value === e.target.value) {
@@ -327,6 +349,12 @@ selectTime.addEventListener("change", (e) => {
   
 }
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+    const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
 loader.setAttribute("hidden", "true")
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
@@ -343,6 +371,8 @@ iconsHeartActive.forEach(icon => {
 
 
 const handleSearchInput = debounce(() => {
+  noResults.classList.add("visually-hidden");
+  noResults.classList.add("visually-hidden");
   btnAllCategories.classList.add("categories-btn-disable")
   const searchText = inputSearch.value.trim();
 
@@ -351,8 +381,13 @@ const handleSearchInput = debounce(() => {
     backendReturnDataFiltersForm.page = 1;
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+      const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
       madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
-      // console.log(res)
       res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         createRecipeContainers(1, _id, title, description, rating, preview, category);
         const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
@@ -368,6 +403,12 @@ iconsHeartActive.forEach(icon => {
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.title = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+      const quantity =  res.data.results.length;
+    if(quantity === 0) {
+      noResults.classList.remove("visually-hidden");
+    } else {
+      noResults.classList.add("visually-hidden");
+    }
       
       res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
         createRecipeContainers(1, _id, title, description, rating, preview, category);

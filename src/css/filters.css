@@ -303,7 +303,7 @@ background: rgba(5, 5, 5, 0.18);
 }
 
 .no-results {
-  display: none;
+  /* display: none; */
 }
 
 .no-results-icon {
