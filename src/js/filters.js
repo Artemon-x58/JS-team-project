@@ -241,9 +241,6 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
 
 
 
-
-
-
 btnAllCategories.addEventListener("click", updateQuantityCards)
 
 function updateQuantityCards() {
