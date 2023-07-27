@@ -18,6 +18,7 @@ const backendReturnDataFiltersForm = new BackendAPI();
 
 
 const paginationNew = new Pagination('tui-pagination-container', {
+  page: 0,
   totalItems: 0,
   itemsPerPage: 0,
   visiblePages: 3,
@@ -195,9 +196,43 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
       totalItems: newTotalItems,
       itemsPerPage: newItemsPerPage,
       visiblePages: 3,
+      page: backendReturnDataFiltersForm.page,
     });
     pagination1.on('beforeMove', evt => {
-      console.log(evt);
+      console.log(evt.page);
+
+      backendReturnDataFiltersForm.page = evt.page;
+      contParentCard.innerHTML = '';
+      backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+  
+        madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
+        
+        
+      console.log(res.data)
+        
+        
+        
+          
+        
+          res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
+              // console.log(title, description, rating);
+              // console.log(_id)
+              createRecipeContainers(1, _id, title, description, rating, preview, category);
+      
+              
+                
+          })
+          
+      //     const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
+      // // console.log(iconsHeartActive);
+      // iconsHeartActive.forEach(icon => {
+      //   // console.log(icon.parentNode.id)
+      //   makeHeartActive(icon.parentNode.id, icon)
+      // })
+      }).catch(error => {
+          console.error('Произошла ошибка при запросе:', error);
+      });
+
     });
   })
 }
@@ -215,6 +250,7 @@ function updateQuantityCards() {
   selectArea.selectedIndex = 0;
   selectIngredients.selectedIndex = 0;
   inputSearch.value = "";
+  backendReturnDataFiltersForm.page = 1;
   backendReturnDataFiltersForm.title = '';
   backendReturnDataFiltersForm.time = '';
   backendReturnDataFiltersForm.area = '';
@@ -289,19 +325,19 @@ function createRecipeContainers(numContainers, _id, title, description, rating, 
         <div class="filters-rating-wrap">
   <p class="filters-rating-recipe">${rating.toFixed(1)}</p>
   <svg class="filters-icon-rating-recipe-1 ${getRatingColorClass(rating, 1)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="../img/symbol-defs.svg#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-2 ${getRatingColorClass(rating, 2)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="../img/symbol-defs.svg#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-3 ${getRatingColorClass(rating, 3)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="../img/symbol-defs.svg#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-4 ${getRatingColorClass(rating, 4)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="../img/symbol-defs.svg#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-5 ${getRatingColorClass(rating, 5)}">
-    <use href="./img/symbol-defs.svg#icon-star"></use>
+    <use href="../img/symbol-defs.svg#icon-star"></use>
   </svg>
   <button class="filters-btn-recipe" type="button">See recipe</button>
 </div>
@@ -376,7 +412,7 @@ function sortingCategory (category) {
   btnAllCategories.classList.add("categories-btn-disable")
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.category = category;
-
+  backendReturnDataFiltersForm.page = 1;
   // return axios.get(
   //   `${this.#BASE_URL}recipes?category=${this.category}&page=${
   //     this.page
@@ -419,11 +455,14 @@ console.log(e.target.value)
   else {
   backendReturnDataFiltersForm.ingredient = e.target.value;
 }
+backendReturnDataFiltersForm.page = 1;
   console.log(e.target.value)
   console.log(backendReturnDataFiltersForm.ingredient)
   contParentCard.innerHTML = '';
   // console.log(backendReturnDataFiltersForm.category)
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+
+    
 
     madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
 
@@ -449,19 +488,38 @@ selectArea.addEventListener("change", (e) => {
   else {
   backendReturnDataFiltersForm.area = e.target.value;
 }
+backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
-
+    
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     paginationNew.totalItems = res.data.totalPages * res.data.perPage;
     paginationNew.itemsPerPage = backendReturnDataFiltersForm.limit;
-    console.log(res.data)
+    paginationNew.page = backendReturnDataFiltersForm.page;
+
+    
     console.log(paginationNew.totalItems)                                      
     console.log(paginationNew.itemsPerPage)
+    console.log(paginationNew.page)
 
     paginationNew.on('beforeMove', evt => {
-      console.log(evt);
+      console.log(paginationNew.page);
+      backendReturnDataFiltersForm.page = evt;
+      contParentCard.innerHTML = '';
+      console.log(backendReturnDataFiltersForm.page)
+      console.log('hallo')
+      backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
+        res.data.results.forEach(({_id, title, description, rating, preview, category}) => {
+          // console.log(title, description, rating);
+          // console.log(_id)
+          createRecipeContainers(1, _id, title, description, rating, preview, category);
+  
+          
+            
+      })
+      })
+
     });
 
     
@@ -482,6 +540,9 @@ iconsHeartActive.forEach(icon => {
   
 });
 
+
+
+
 paginationNew.on('beforeMove', evt => {
   console.log(evt);
   backendReturnDataFiltersForm.page = evt.page;
@@ -501,7 +562,7 @@ console.log(e.target.value)
   else {
   backendReturnDataFiltersForm.time = parseInt(e.target.value, 10);
 }
-  
+backendReturnDataFiltersForm.page = 1;
   contParentCard.innerHTML = '';
   backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
 
@@ -529,6 +590,7 @@ const handleSearchInput = debounce(() => {
 
   if(searchText !== "") {
     backendReturnDataFiltersForm.title = searchText;
+    backendReturnDataFiltersForm.page = 1;
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
       madeFirstPagination(res.data.totalPages, res.data.totalPages * res.data.perPage, backendReturnDataFiltersForm.limit)
@@ -546,6 +608,7 @@ iconsHeartActive.forEach(icon => {
       console.error("Произошла ошибка при запросе:", error);
     });
   } else {
+    backendReturnDataFiltersForm.page = 1;
     contParentCard.innerHTML = '';
     backendReturnDataFiltersForm.title = '';
     backendReturnDataFiltersForm.searchFilterRecipes().then(res => {
