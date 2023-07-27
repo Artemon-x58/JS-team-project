@@ -10,6 +10,19 @@
   --dark-description-font-color: rgba(255, 255, 255, 0.8);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .categories-gallery {
   display: flex;
   flex-direction: column;
@@ -81,8 +94,7 @@
 }
 
 .favorit-gallary-null {
-  margin-top: 64px;
-  margin: auto;
+  bottom: -50%;
   text-align: center;
 }
 
@@ -94,7 +106,6 @@
 
 .text-nothing {
   margin: 0 auto;
-  text-align: center;
   max-width: 335px;
 }
 
