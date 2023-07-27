@@ -18,12 +18,9 @@ export class BackendAPI {
     email: '',
   };
   // recipeID = null;
-  // userRatings = {
-  //   name: '',
-  //   phone: '',
-  //   email: '',
-  //   comment: '',
-  // };
+  userOrder = {
+    
+  };
 
   // Перелік подій(майстер-класів)
   searchMasterClass() {
@@ -141,7 +138,7 @@ export class BackendAPI {
   passOrder() {
     return axios.post(
       //tasty-treats-backend.p.goit.global/api/orders
-      `${this.#BASE_URL}orders/add,${this.userOrder}`
+      `${this.#BASE_URL}orders/add`, this.userOrder
     );
     // const backendReturnData = new BackendAPI();
 
