@@ -18,12 +18,9 @@ export class BackendAPI {
     email: '',
   };
   // recipeID = null;
-  // userRatings = {
-  //   name: '',
-  //   phone: '',
-  //   email: '',
-  //   comment: '',
-  // };
+  userOrder = {
+    
+  };
 
   // Перелік подій(майстер-класів)
   searchMasterClass() {
@@ -45,10 +42,12 @@ export class BackendAPI {
   // Перелік рецептів з фільтрацією по категорії, інгредієнту, ключовому слову, часу та районах з урахування кількості рецептів у запиті та порядкового номеру сторінки
 
   searchFilterRecipes() {
+    
+    const limit = getLimitFilters(6, 8, 9);
     return axios.get(
       `${this.#BASE_URL}recipes?category=${this.category}&page=${
         this.page
-      }&limit=${this.limit}&time=${this.time}&area=${this.area}&ingredient=${
+      }&limit=${limit}&time=${this.time}&area=${this.area}&ingredient=${
         this.ingredient
       }&title=${this.title}`
     );
@@ -67,7 +66,7 @@ export class BackendAPI {
   // Все рецепты, должны открываться по кнопке "All categories" и при поиске по наименованию из фильтра?
   
   searchAllRecipes() {
-    const limit = getLimitFilters();
+    const limit = getLimitFilters(6, 8, 9);
 
   return axios.get(
     `${this.#BASE_URL}recipes?page=${this.page}&limit=${limit}`
@@ -139,7 +138,7 @@ export class BackendAPI {
   passOrder() {
     return axios.post(
       //tasty-treats-backend.p.goit.global/api/orders
-      `${this.#BASE_URL}orders/add,${this.userOrder}`
+      `${this.#BASE_URL}orders/add`, this.userOrder
     );
     // const backendReturnData = new BackendAPI();
 
@@ -157,13 +156,14 @@ export class BackendAPI {
 
   
 }
-function getLimitFilters() {
+
+function getLimitFilters(a, b, c) {
   if (window.innerWidth < 768) { // Мобильные устройства
-    return 6;
+    return a;
   } else if (window.innerWidth >= 768 && window.innerWidth < 1280) { // Планшеты
-    return 8;
+    return b;
   } else { // Десктопные устройства
-    return 9;
+    return c;
   }
 }
 

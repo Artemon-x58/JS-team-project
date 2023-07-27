@@ -16,6 +16,8 @@ const recipeDescription = document.querySelector('.ab-recipe-description');
 
 const starContainer = document.querySelector('.ab-star-container');
 
+// const seeRecipe = document.querySelector('.filters-btn-recipe');
+
 function changeVideoLink(newLink) {
   const newLinkId = newLink.split('=');
   const finalLink = `https://www.youtube.com/embed/${newLinkId[1]}`;
@@ -75,15 +77,29 @@ function colorStars(starRating) {
   }
 }
 
-galleryDiv.addEventListener('click', event => {
+export function handleSeeRecipe(event) {
   if (event.target.classList.contains('filters-btn-recipe')) {
     backdropRecipe.toggleAttribute('data-hidden');
     document.body.style.overflow = 'hidden';
 
-    dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
+    if (event.target.parentNode.parentNode.id === '') {
+      dataOptionsObj.recipeID =
+        event.target.parentNode.parentNode.parentNode.id;
+    } else {
+      dataOptionsObj.recipeID = event.target.parentNode.parentNode.id;
+    }
+
     dataOptionsObj
       .searchRecipeID()
       .then(res => {
+        if (event.target.parentNode.parentNode.id === '') {
+          backdropRecipe.id = event.target.parentNode.parentNode.parentNode.id;
+        } else {
+          backdropRecipe.id = event.target.parentNode.parentNode.id;
+        }
+
+        console.log(backdropRecipe.id);
+
         const data = res.data;
         dishName.textContent = data.title;
         changeVideoLink(data.youtube);
@@ -98,9 +114,54 @@ galleryDiv.addEventListener('click', event => {
         console.log(error);
       });
   }
+}
+
+galleryDiv?.addEventListener('click', handleSeeRecipe);
+
+// document.addEventListener('DOMContentLoaded', event => {
+//   const galleryDivFavorites = document.querySelector('.grid-item');
+
+//   console.log(galleryDivFavorites);
+
+//   galleryDivFavorites.addEventListener('click', event => {
+//     handleSeeRecipe(event);
+//   });
+// });
+
+const giveARAtingBtn = document.querySelector('.ab-give-a-rating');
+const ratingModal = document.querySelector('.add-rating-modal');
+const recipeModal = document.querySelector('.modal-recipe');
+
+function toggleRatingModal() {
+  ratingModal.toggleAttribute('data-hidden');
+  recipeModal.toggleAttribute('modal-margin');
+}
+
+function closeRecipeModal() {
+  backdropRecipe.toggleAttribute('data-hidden');
+  document.body.style.overflow = 'auto';
+
+  if (!ratingModal.hasAttribute('data-hidden')) {
+    // ratingModal.toggleAttribute('data-hidden');
+    // recipeModal.toggleAttribute('modal-margin');
+
+    toggleRatingModal();
+  }
+}
+
+giveARAtingBtn.addEventListener('click', event => {
+  // ratingModal.toggleAttribute('data-hidden');
+  // recipeModal.toggleAttribute('modal-margin');
+
+  toggleRatingModal();
 });
 
 exitBtn.addEventListener('click', event => {
-  backdropRecipe.toggleAttribute('data-hidden');
-  document.body.style.overflow = 'auto';
+  closeRecipeModal();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeRecipeModal();
+  }
 });

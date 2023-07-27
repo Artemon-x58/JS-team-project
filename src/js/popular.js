@@ -11,10 +11,10 @@ function debounce(func, delay) {
 }
 
 
-function createRecipePopular(description, preview, title) {
+function createRecipePopular(id, description, preview, title) {
   const popularBox = document.querySelector(".popular-box");
   const markup = `
-    <div class="popular-wrapper">
+    <div id="${id}" class="popular-wrapper">
       <img src="${preview}" alt="${title}">
       <div class="popular-box-text">
         <h3 class="popular-name">${title}</h3>
@@ -36,8 +36,8 @@ function showPopularRecipes() {
       const numContainers = window.innerWidth >= 768 ? 4 : 2;
 
      
-      recipes.slice(0, numContainers).forEach(({ description, preview, title }) => {
-        createRecipePopular(description, preview, title);
+      recipes.slice(0, numContainers).forEach(({ _id, description, preview, title }) => {
+        createRecipePopular(_id, description, preview, title);
       });
     })
     .catch(console.warn);

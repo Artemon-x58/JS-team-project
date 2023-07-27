@@ -368,7 +368,7 @@ whitespace: nowrap; */
 }
 
 .no-results {
-  display: none;
+  /* display: none; */
 }
 
 .no-results-icon {
