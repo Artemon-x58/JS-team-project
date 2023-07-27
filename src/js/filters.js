@@ -2,7 +2,7 @@ import debounce from "lodash.debounce";
 import 'tui-pagination';
 import Pagination from 'tui-pagination';
 import { BackendAPI } from './tasty-backend-api';
-
+import linkIcons from "../img/symbol-defs.svg"
 import axios from "axios";
 
 
@@ -317,30 +317,29 @@ updateQuantityCards();
 function createRecipeContainers(numContainers, _id, title, description, rating, preview, category) {
     for (let i = 0; i < numContainers; i++) {
         
-    const linkStar = "../img/symbol-defs.svg#icon-star";
-    const linkHeart = "../img/symbol-defs.svg#"
+    
     const murkup = `<div id="${_id}" data-category="${category}" class="filters-box-child" style="background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${preview}'); background-size: cover; background-position: center;">
         <svg class="filters-icon-heart">
-            <use href="${linkHeart}icon-heart"></use>
+            <use href="${linkIcons}#icon-heart"></use>
         </svg>
         <h2 class="filters-title-recipe">${title}</h2>
         <p class="filters-description-recipe">${description}</p>
         <div class="filters-rating-wrap">
   <p class="filters-rating-recipe">${rating.toFixed(1)}</p>
   <svg class="filters-icon-rating-recipe-1 ${getRatingColorClass(rating, 1)}">
-    <use href="${linkStar}"></use>
+    <use href="${linkIcons}#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-2 ${getRatingColorClass(rating, 2)}">
-    <use href="${linkStar}"></use>
+    <use href="${linkIcons}#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-3 ${getRatingColorClass(rating, 3)}">
-    <use href="${linkStar}"></use>
+    <use href="${linkIcons}#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-4 ${getRatingColorClass(rating, 4)}">
-    <use href="${linkStar}"></use>
+    <use href="${linkIcons}#icon-star"></use>
   </svg>
   <svg class="filters-icon-rating-recipe-5 ${getRatingColorClass(rating, 5)}">
-    <use href="${linkStar}"></use>
+    <use href="${linkIcons}#icon-star"></use>
   </svg>
   <button class="filters-btn-recipe" type="button">See recipe</button>
 </div>
