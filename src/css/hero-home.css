@@ -184,7 +184,7 @@
       
   }
   
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
       .container.hero-container {
           display: flex;
           gap: 30px;

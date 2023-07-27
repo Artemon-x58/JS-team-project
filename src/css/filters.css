@@ -590,7 +590,7 @@ line-height: 1.5; /* 128.571% */
 
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   /* .filters-box-parent .filters-box-child:nth-child(n) {
       display: block;
     } */
