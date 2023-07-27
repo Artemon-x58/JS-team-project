@@ -389,10 +389,14 @@ line-height: 22px !important;
 .loader {
   width: 48px;
   height: 48px;
-  display: inline-block;
+  /* display: inline-block; */
   position: relative;
-  top: 30%;
+  /* top: 20%; */
   z-index: 1000;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  display: block;
   border: 3px solid;
   border-color:#de3500 #0000 var(--accent-color) #0000;
   border-radius: 50%;
@@ -461,6 +465,9 @@ line-height: 22px !important;
     .filters-box-parent .filters-box-child:nth-child(n + 9) {
       display: none;
     } */
+    .loader {
+      top: 20%;
+    }
   .filters-form {
       display: flex;
       flex-direction: row;
@@ -587,6 +594,7 @@ line-height: 1.5; /* 128.571% */
   /* .filters-box-parent .filters-box-child:nth-child(n) {
       display: block;
     } */
+    
 .filters-box-parent {
 justify-content: center;
 }
