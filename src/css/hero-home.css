@@ -25,6 +25,9 @@
   padding: 10px 20px;
   background-color: transparent;
   transition: background-color var(--trans), color var(--trans);
+
+  }
+ 
 }
 
 .hero-btn:hover,
@@ -56,6 +59,7 @@
 
 .title {
   color: rgba(248, 248, 248, 0.6);
+
   text-align: center;
   font-size: 10px;
   font-weight: 500;
