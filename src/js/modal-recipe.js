@@ -114,8 +114,6 @@ function partialHandleSeeRecipe(event, closestIdContainer) {
         backdropRecipe.id = event.target.parentNode.parentNode.id;
       }
 
-      
-
       const data = res.data;
       dishName.textContent = data.title;
       changeVideoLink(data.youtube);
@@ -144,20 +142,8 @@ export function handleSeeRecipe(event) {
 galleryDiv?.addEventListener('click', handleSeeRecipe);
 
 popularDiv?.addEventListener('click', event => {
-  console.log('mama ya gey');
-
   handleSeeRecipe(event);
 });
-
-// document.addEventListener('DOMContentLoaded', event => {
-//   const galleryDivFavorites = document.querySelector('.grid-item');
-
-//   console.log(galleryDivFavorites);
-
-//   galleryDivFavorites.addEventListener('click', event => {
-//     handleSeeRecipe(event);
-//   });
-// });
 
 const giveARAtingBtn = document.querySelector('.ab-give-a-rating');
 const ratingModal = document.querySelector('.add-rating-modal');
@@ -173,16 +159,12 @@ function closeRecipeModal() {
   document.body.style.overflow = 'auto';
 
   if (!ratingModal.hasAttribute('data-hidden')) {
-    // ratingModal.toggleAttribute('data-hidden');
-    // recipeModal.toggleAttribute('modal-margin');
 
     toggleRatingModal();
   }
 }
 
 giveARAtingBtn.addEventListener('click', event => {
-  // ratingModal.toggleAttribute('data-hidden');
-  // recipeModal.toggleAttribute('modal-margin');
 
   toggleRatingModal();
 });

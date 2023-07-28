@@ -230,7 +230,6 @@ contParentCard.insertAdjacentHTML("beforeend", murkup)
 
     function handleMediaQueryChange(event) {
       if (event.matches) {
-        console.log("Ширина вьюпорта от 768px до 1200px: 7");
         const filtersContainer = document.querySelector('.filters-container');
       const popularContainer = document.querySelector('.popular-container');
       const categoriesContainer = document.querySelector('.categories-container');
@@ -240,8 +239,6 @@ contParentCard.insertAdjacentHTML("beforeend", murkup)
       newContainer.appendChild(popularContainer);
       filtersContainer.insertAdjacentElement("afterbegin",newContainer )
       }  else {
-        console.log("Ширина вьюпорта менее 768px: 6");
-        console.log("Ширина вьюпорта от 768px до 1200px: 7");
         const filtersContainer = document.querySelector('.filters-container');
       const popularContainer = document.querySelector('.popular-container');
       const categoriesContainer = document.querySelector('.categories-container');

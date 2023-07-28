@@ -1,4 +1,5 @@
 import { BackendAPI } from './tasty-backend-api';
+import Notiflix from 'notiflix';
 
 const modalOrderPost = new BackendAPI();
 
@@ -20,10 +21,10 @@ form.addEventListener('submit', e => {
   modalOrderPost
     .passOrder()
     .then(res => {
-      console.log('Успешный ответ:', res.data);
+      Notiflix.Notify.success('Success. Your order has been added!');
     })
     .catch(error => {
-      console.error('Ошибка при отправке запроса:', error);
+      Notiflix.Notify.failure('Oops, something went wrong!');
     });
 
   closeModal();

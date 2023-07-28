@@ -10,7 +10,6 @@ function debounce(func, delay) {
   };
 }
 
-
 function createRecipePopular(id, description, preview, title) {
   const popularBox = document.querySelector(".popular-box");
   const markup = `
@@ -24,11 +23,9 @@ function createRecipePopular(id, description, preview, title) {
   popularBox.insertAdjacentHTML("beforeend", markup);
 }
 
-
 function showPopularRecipes() {
   const popularBox = document.querySelector(".popular-box");
   popularBox.innerHTML = "";
-
   const backendReturnDataPop = new BackendAPI();
   backendReturnDataPop.searchPopularRecipes()
     .then(resp => {
@@ -42,9 +39,5 @@ function showPopularRecipes() {
     })
     .catch(console.warn);
 }
-
-
 window.addEventListener('resize', debounce(showPopularRecipes, 250));
-
-
 showPopularRecipes();

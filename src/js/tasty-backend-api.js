@@ -17,19 +17,14 @@ export class BackendAPI {
     rate: 5,
     email: '',
   };
-  // recipeID = null;
   userOrder = {
     
   };
 
-  // Перелік подій(майстер-класів)
+
   searchMasterClass() {
     return axios.get(`${this.#BASE_URL}events`);
-  } // const backendReturnData = new BackendAPI();
-  // const resp = backendReturnData.searchMasterClass()
-  // .then(resp => console.log(resp.data))
-  // .catch(console.warn);
-
+  } 
 
   // Перелік категорій (рецептів)
   searchListCategories() {
@@ -167,10 +162,3 @@ function getLimitFilters(a, b, c) {
   }
 }
 
-// function getLimitPopular() {
-//   if (window.innerWidth < 768) { // Мобильные устройства
-//     return 2;
-//   }  // Десктопные устройства
-//     return 4;
-    
-// }

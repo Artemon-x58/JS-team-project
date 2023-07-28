@@ -1,11 +1,6 @@
-// import Swiper from 'swiper';
-// // import Swiper styles
-// import 'swiper/css';
+
 import { BackendAPI } from './tasty-backend-api';
 const heroSlider = new BackendAPI();
-
-
-
 const swiperWrapper = document.querySelector(".swiper-wrapper")
 
 
@@ -15,9 +10,9 @@ heroSlider.searchMasterClass().then( res => {
         
         createMurkupSlider(cook.imgWebpUrl, topic.name, topic.area, topic.previewWebpUrl
             )
-        
     })
-    
+}).catch( error => {
+  console.warn(error)
 })
 
 function createMurkupSlider (src, name, area, urlEat) {
@@ -31,14 +26,9 @@ function createMurkupSlider (src, name, area, urlEat) {
   swiperWrapper.insertAdjacentHTML("beforeend", murkup)
 }
 
-
-
-
 const swiper = new Swiper('.swiper-container', {
-    // Настройки слайдера
-    // slidesPerView: 1,
+ 
     spaceBetween: 20,
-    // loop: true,
     spaceBetween: 10,
 
     pagination: {
@@ -48,7 +38,7 @@ const swiper = new Swiper('.swiper-container', {
 
     grabCursor: true,
     slidesPerView: 0.8,
-    // spaceBetween: 30,
+
   });
 
 
