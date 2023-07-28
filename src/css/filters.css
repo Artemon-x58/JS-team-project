@@ -84,7 +84,7 @@
 .filters-label-time {
   position: absolute;
   top: 84px;
-  left: 174px;
+  left: 132px;
 }
 .filters-span-time {
   position: absolute;
@@ -251,7 +251,7 @@
 
 .filters-title-recipe {
   margin-bottom: 8px;
-  overflow-y: scroll;
+  overflow: hidden;
   height: 18px;
   color: var(--boody-bg);
   font-weight: 600;
@@ -270,7 +270,7 @@
 .filters-description-recipe {
   margin-bottom: 16px;
   height: 32px;
-  overflow-y: scroll;
+  overflow: hidden;
   color: var(--boody-bg);
   /* text-overflow: ellipsis;
 whitespace: nowrap; */
@@ -516,7 +516,9 @@ line-height: 22px !important; */
   background-color: #050505 !important;
 }
 
-.filters-box-child:nth-last-child(-n + 3) {
+.filters-box-child:nth-child(7),
+.filters-box-child:nth-child(8),
+.filters-box-child:nth-child(9) {
   display: none;
 }
 
@@ -524,10 +526,15 @@ line-height: 22px !important; */
   margin-bottom: 0px;
 }
 @media screen and (min-width: 768px) {
-  .filters-box-child:nth-last-child(-n + 3) {
+  .filters-box-child:nth-child(7),
+  .filters-box-child:nth-child(8),
+  .filters-box-child:nth-child(9) {
     display: inline;
   }
 
+  .filters-box-child:nth-child(9) {
+    display: none;
+  }
   .filters-main-box {
     margin-left: 32px;
   }
@@ -796,5 +803,20 @@ line-height: 22px !important; */
 
   .categories-btn {
     margin-bottom: 42px;
+  }
+
+  .categories-box {
+    width: 235px;
+  }
+
+  .filters-main-box {
+    margin-left: 0;
+  }
+
+  .filters-box-child:nth-child(3n) {
+    margin-right: 0;
+  }
+  .filters-box-parent {
+    width: 782px;
   }
 }

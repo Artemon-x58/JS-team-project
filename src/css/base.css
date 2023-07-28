@@ -15,8 +15,8 @@ body {
   font-size: 14px;
   background-color: var(--boody-bg);
 }
-.dark body{
-    background-color: var(--dark-boody-bg);
+.dark body {
+  background-color: var(--dark-boody-bg);
 }
 /* Reset styles */
 h1,
@@ -27,20 +27,17 @@ h5,
 h6,
 p {
   margin: 0;
-
 }
 .dark h1,
 .dark h2,
 .dark h3,
 .dark h4,
 .dark h5,
-.dark h6
-{
-    color:  var(--white-color) ;
-  }
+.dark h6 {
+  color: var(--white-color);
+}
 
-
-.dark p{
+.dark p {
   color: var(--dark-description-font-color);
 }
 ul,
@@ -58,9 +55,9 @@ a {
   text-decoration: none;
   outline: transparent;
 }
-.dark a{
-    color:  var(--dark-description-font-color) ;
-  }
+.dark a {
+  color: var(--dark-description-font-color);
+}
 
 button {
   font-family: inherit;
@@ -107,7 +104,6 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
 
 @media only screen and (min-width: 768px) {
   .container {
