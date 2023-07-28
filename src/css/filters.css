@@ -116,6 +116,14 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+.filters-select-time::-webkit-scrollbar {
+  width: 8px; /* Ширина скроллбара */
+}
+
+.filters-select-time::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: rgba(5, 5, 5, 0.18);
+}
 .filters-label-area {
   position: relative;
 }
