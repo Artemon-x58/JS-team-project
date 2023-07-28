@@ -225,8 +225,13 @@ contParentCard.insertAdjacentHTML("beforeend", murkup)
   }
   
   function combineContainers() {
-    if (window.innerWidth >= 768) {
-      const filtersContainer = document.querySelector('.filters-container');
+
+    const mediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1280px)');
+
+    function handleMediaQueryChange(event) {
+      if (event.matches) {
+        console.log("Ширина вьюпорта от 768px до 1200px: 7");
+        const filtersContainer = document.querySelector('.filters-container');
       const popularContainer = document.querySelector('.popular-container');
       const categoriesContainer = document.querySelector('.categories-container');
       const newContainer = document.createElement('div');
@@ -234,8 +239,27 @@ contParentCard.insertAdjacentHTML("beforeend", murkup)
       newContainer.appendChild(categoriesContainer);
       newContainer.appendChild(popularContainer);
       filtersContainer.insertAdjacentElement("afterbegin",newContainer )
-    } else { return
+      }  else {
+        console.log("Ширина вьюпорта менее 768px: 6");
+        console.log("Ширина вьюпорта от 768px до 1200px: 7");
+        const filtersContainer = document.querySelector('.filters-container');
+      const popularContainer = document.querySelector('.popular-container');
+      const categoriesContainer = document.querySelector('.categories-container');
+      const newContainer = document.createElement('div');
+      newContainer.className = 'new-container';
+      newContainer.appendChild(categoriesContainer);
+      newContainer.appendChild(popularContainer);
+      filtersContainer.insertAdjacentElement("afterbegin",newContainer )
+        return
+      }
     }
+    
+    mediaQuery.addListener(handleMediaQueryChange);
+    
+    handleMediaQueryChange(mediaQuery);
+
+
+    
   }
   combineContainers();
 
