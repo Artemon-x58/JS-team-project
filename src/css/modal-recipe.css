@@ -184,6 +184,9 @@
   display: flex;
   gap: 8px;
 
+  max-width: 270px;
+  flex-wrap: wrap;
+
   margin-bottom: 24px;
 }
 
@@ -283,7 +286,7 @@
   .ab-stars-and-time {
     justify-content: end;
 
-    margin-bottom: 38px;
+    margin-bottom: 55px;
   }
 
   .ab-hashtag-list {
