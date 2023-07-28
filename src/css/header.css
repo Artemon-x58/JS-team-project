@@ -39,9 +39,7 @@ letter-spacing: -0.64px;
 
 }
 
-.header-logo-acent {
-color: var(--accent-color);
-}
+
 
 .header-icon-order-basket-btn,
 .header-icon-burger-btn {
@@ -77,9 +75,7 @@ color: var(--accent-color);
     stroke: var(--accent-color);
 }
 
-.active-link {
-    color: var(--accent-color);
-}
+
 .mobile-menu {
     
     position: fixed;
@@ -263,8 +259,11 @@ letter-spacing: -0.72px;
 .header-wrap {
 margin-left: 0;
 }
-.activ .header-nav {
-  color: var(--accent-color);
+.header-link-home {
+color: var(--accent-color);
+}
+.dark .header-link-home {
+color: var(--accent-color);
 }
 
 .header-icon-order-basket {

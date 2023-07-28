@@ -65,6 +65,10 @@
   font-weight: 500;
   line-height: 1.29; /* 125% */
 }
+.dark .categories-list-btn{
+  background-color: var(--dark-boody-bg);
+  color: var(--dark-description-font-color);
+}
 
 .categories-list-btn:hover,
 .categories-list-btn:focus {
