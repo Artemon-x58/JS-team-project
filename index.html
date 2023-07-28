@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/JS-team-project/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
+
     <title>Tasty Treats</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,75 +20,79 @@
       referrerpolicy="no-referrer"
     />
     <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     
-    <script type="module" crossorigin src="/JS-team-project/assets/index-2f2d2f1e.js"></script>
-    <link rel="modulepreload" crossorigin href="/JS-team-project/assets/modal-rating-203cff66.js">
-    <link rel="stylesheet" href="/JS-team-project/assets/modal-rating-3bb5d0b1.css">
+    <script type="module" crossorigin src="/JS-team-project/assets/index-184ca8de.js"></script>
+    <link rel="modulepreload" crossorigin href="/JS-team-project/assets/to-top-button-e3f191be.js">
+    <link rel="stylesheet" href="/JS-team-project/assets/to-top-button-5503e3ee.css">
     <link rel="stylesheet" href="/JS-team-project/assets/index-50601c1a.css">
   </head>
   <body>
     <header>
       <div class="container">
-    <div class="header">
-      <ul class="nav-header-list">
-        <li class="header-nav">
-      <a class="header-link-nav header-link-home" href="./index.html">Home</a>
-        </li>
-        <li class="header-nav">
-          <a class="header-link-nav header-link-favorites" href="./favorites.html">Favorites</a>
-        </li>
-      </ul>
-    <a class="header-logo" href="./index.html"><span class="header-logo-acent">tasty</span>treats.</a>
-    <div class="header-wrap">
-        <button type="button" class="header-icon-order-basket-btn">
-<svg class="header-icon-order-basket" width="24" height="24">
-    <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-order-basket"></use>
-</svg>
-</button>
-<button type="button" class="header-icon-burger-btn">
-<svg class="header-icon-burger js-open-menu" width="32" height="32">
-    <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-burger"></use>
-</svg>
-</button>
-</div>
-
-<label class="checkbox-ios-desktop">
-  <input class="checkbox-btn" type="checkbox" >
-  <span class="checkbox-ios-switch"></span>
-</label>
-
-</div>
-<div>
-    <div class="mobile-menu js-menu-container" id="mobile-menu">
-        <div class="container mobile-menu-container">
-            <button class="mobile-menu-close-btn js-close-menu">
-                <svg class="mobile-menu-close-icon" width="28" height="28">
-                  <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-cross"></use>
-                </svg>
-              </button>
-    <ul class="list icon-mobile-menu">
-      <li class="mobile-menu-home">
-<a class="header-link-home" href="./index.html">Home</a>
+  <div class="header" id="header">
+    <ul class="nav-header-list">
+      <li class="header-nav">
+        <a class="header-link-nav header-link-home" href="./index.html">Home</a>
       </li>
-      <li class="mobile-menu-favorites">
-        <a class="header-link-favorites" href="./favorites.html">Favorites</a>
+      <li class="header-nav">
+        <a class="header-link-nav header-link-favorites" href="./favorites.html"
+          >Favorites</a
+        >
       </li>
     </ul>
-    <label class="checkbox-ios">
-        <input type="checkbox">
-        <span class="checkbox-ios-switch"></span>
+    <a class="header-logo" href="./index.html"
+      ><span class="header-logo-acent">tasty</span>treats.</a
+    >
+    <div class="header-wrap">
+      <button type="button" class="header-icon-order-basket-btn">
+        <svg class="header-icon-order-basket" width="24" height="24">
+          <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-order-basket"></use>
+        </svg>
+      </button>
+      <button type="button" class="header-icon-burger-btn">
+        <svg class="header-icon-burger js-open-menu" width="32" height="32">
+          <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-burger"></use>
+        </svg>
+      </button>
+    </div>
+
+    <label class="checkbox-ios-desktop">
+      <input class="checkbox-btn" type="checkbox" />
+      <span class="checkbox-ios-switch"></span>
     </label>
-</div>
-</div>
+  </div>
+  <div>
+    <div class="mobile-menu js-menu-container" id="mobile-menu">
+      <div class="container mobile-menu-container">
+        <button class="mobile-menu-close-btn js-close-menu">
+          <svg class="mobile-menu-close-icon" width="28" height="28">
+            <use href="/JS-team-project/assets/symbol-defs-6e526e43.svg#icon-cross"></use>
+          </svg>
+        </button>
+        <ul class="list icon-mobile-menu">
+          <li class="mobile-menu-home">
+            <a class="header-link-home" href="./index.html">Home</a>
+          </li>
+          <li class="mobile-menu-favorites">
+            <a class="header-link-favorites" href="./favorites.html"
+              >Favorites</a
+            >
+          </li>
+        </ul>
+        <label class="checkbox-ios">
+          <input type="checkbox" />
+          <span class="checkbox-ios-switch"></span>
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ---------------------------------------------------------------TABLET AND DESKTOP -->
-
 
     </header>
 
@@ -487,8 +491,15 @@
   </div>
 </div>
 
+      <a href="#header">
+  <button class="to-top-button">
+    <svg class="to-top-img">
+      <use href="../img/symbol-defs.svg#icon-strelka"></use>
+    </svg>
+  </button>
+</a>
+
     </main>
-    
 
     
   </body>
