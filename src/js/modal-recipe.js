@@ -90,7 +90,7 @@ function partialHandleSeeRecipe(event, closestIdContainer) {
 
   if (event.target.parentNode.parentNode.id === '') {
     if (closestIdContainer !== null) {
-      console.log(closestIdContainer.id, 'bubka bibka');
+      
 
       dataOptionsObj.recipeID = closestIdContainer.id;
     } else {
@@ -114,7 +114,7 @@ function partialHandleSeeRecipe(event, closestIdContainer) {
         backdropRecipe.id = event.target.parentNode.parentNode.id;
       }
 
-      console.log(backdropRecipe.id);
+      
 
       const data = res.data;
       dishName.textContent = data.title;

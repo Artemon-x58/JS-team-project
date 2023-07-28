@@ -37,8 +37,6 @@ const addBtnModal = document.querySelector(".ab-add-to-favorite")
 
 
 
-
-
 backendReturnDataFiltersForm.searchAreas().then(res => {
     const sortedArea = res.data.sort((a, b) => a.name.localeCompare(b.name));
     sortedArea.forEach(({_id, name}) => {
@@ -469,6 +467,35 @@ document.addEventListener('DOMContentLoaded', () => {
     favoritiesRecipes = JSON.parse(storedFavorites);
   }
 });
+
+
+
+addBtnModal.addEventListener("click" , e => {
+  const modalRecipeBtnFavorites = document.querySelector(".modal-recipe-backdrop")
+console.log(modalRecipeBtnFavorites.id)
+let localData = localStorage.getItem('favoritiesRecipes');
+const arrayLocalStorage = JSON.parse(localData)
+arrayLocalStorage.forEach(({_id}) => {
+  console.log(_id)
+  if(_id === modalRecipeBtnFavorites.id) {
+  return  console.log("рецепт уэе в избранных")
+  } else { axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes/${modalRecipeBtnFavorites.id}`).then(res => {
+    console.log(res.data)
+    const parentSvgHeaartData = {
+      _id: res.data._id,
+      title: res.data.title,
+      description: res.data.description,
+      rating: res.data.rating,
+      preview: res.data.preview,
+      category: res.data.category
+    }
+  })
+
+  }
+})
+
+})
+
 
 // addBtnModal.addEventListener("click", e => {
 //   console.log(e)
