@@ -470,71 +470,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-addBtnModal.addEventListener("click" , e => {
-  const modalRecipeBtnFavorites = document.querySelector(".modal-recipe-backdrop")
-console.log(modalRecipeBtnFavorites.id)
-let localData = localStorage.getItem('favoritiesRecipes');
-const arrayLocalStorage = JSON.parse(localData)
-arrayLocalStorage.forEach(({_id}) => {
-  console.log(_id)
-  if(_id === modalRecipeBtnFavorites.id) {
-  return  console.log("рецепт уэе в избранных")
-  } else { axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes/${modalRecipeBtnFavorites.id}`).then(res => {
-    console.log(res.data)
-    const parentSvgHeaartData = {
-      _id: res.data._id,
-      title: res.data.title,
-      description: res.data.description,
-      rating: res.data.rating,
-      preview: res.data.preview,
-      category: res.data.category
-    }
-  })
+addBtnModal.addEventListener("click", (e) => {
+  const modalRecipeBtnFavorites = document.querySelector(".modal-recipe-backdrop");
 
+
+  let localData = localStorage.getItem('favoritiesRecipes');
+  let dataArray = localData ? JSON.parse(localData) : [];
+
+  const recipeExists = dataArray.some(({ _id }) => _id === modalRecipeBtnFavorites.id);
+
+  if (recipeExists) {
+    console.log("Рецепт уже в избранных");
+  } else {
+    axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes/${modalRecipeBtnFavorites.id}`).then((res) => {
+      const newObj = {
+        _id: res.data._id,
+        title: res.data.title,
+        description: res.data.description,
+        rating: res.data.rating,
+        preview: res.data.preview,
+        category: res.data.category,
+      };
+      dataArray.push(newObj);
+      localStorage.setItem('favoritiesRecipes', JSON.stringify(dataArray));
+      const iconsHeartActive = document.querySelectorAll(".filters-icon-heart");
+      
+      iconsHeartActive.forEach( icon => {
+        if(icon.parentNode.id === modalRecipeBtnFavorites.id) {
+          icon.style.fill = "var(--boody-bg)";
+        }
+      })
+    });
   }
-})
-
-})
-
-
-// addBtnModal.addEventListener("click", e => {
-//   console.log(e)
-//   if( e.target.tagName !== "use" ) {
-// return
-//   }
-//   const svgHeart = e.target.parentNode;
-//   svgHeart.classList.toggle("filters-icon-heart-toggle")
-
-//   const parentSvgHeart = svgHeart.parentNode;
-// const iconHeart = parentSvgHeart.querySelector(".filters-icon-heart");
-// const titleCard = parentSvgHeart.querySelector(".filters-title-recipe");
-// const descriptionCard = parentSvgHeart.querySelector(".filters-description-recipe");
-// const numberRatingCard = parentSvgHeart.querySelector(".filters-rating-recipe");
-// const data = parentSvgHeart.getAttribute("data-category")
-// const urlForPreview = parentSvgHeart.style.backgroundImage;
-//   const parentSvgHeaartData = {
-//     _id: parentSvgHeart.id,
-//     title: titleCard.textContent,
-//     description: descriptionCard.textContent,
-//     rating: numberRatingCard.textContent,
-//     preview: urlForPreview.match(/url\(['"]?([^'"]+)['"]?\)/)[1],
-//     category: data
-//   }
-  
-//   if(svgHeart.classList.contains("filters-icon-heart-toggle")) {
-    
-//     const isRecipeAlreadyAdded = favoritiesRecipes.some(item => item._id === parentSvgHeaartData._id);
-//     if (!isRecipeAlreadyAdded) {
-//       favoritiesRecipes.push(parentSvgHeaartData);
-//       localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes));
-//     }
-//   } else {
-//     favoritiesRecipes = favoritiesRecipes.filter(item => item._id !== parentSvgHeaartData._id);
-//     localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes))
-//   }
-// }
-// );
-
+});
 
 contParentCard.addEventListener("click", e => {
   if( e.target.tagName !== "use" ) {
