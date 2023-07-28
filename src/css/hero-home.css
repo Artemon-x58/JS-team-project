@@ -53,6 +53,7 @@
   /* min-width: 0; */
   gap: 8px;
   overflow: hidden;
+  
 }
 
 .image-slider_image {
@@ -189,9 +190,12 @@
     gap: 30px;
   }
   .hero-slider .swiper-pagination {
-    /* left: 20%; */
-    /* bottom: 100px; */
-    transform: translateX(225px);
+    left: 63%;
+    bottom: 180px;
+    /* transform: translateX(225px); */
+    width: 100px;
+    margin-left: auto;
+    display: block;
   }
   .hero-cont-text {
     margin-top: auto;
