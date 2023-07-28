@@ -4,7 +4,6 @@
 
   padding-left: 0;
   padding-right: 0;
-
 }
 .popular-heading {
   margin-bottom: 20px;
@@ -20,8 +19,6 @@
   height: 67px;
   overflow: hidden;
   cursor: pointer;
-
-
 }
 .popular-wrapper img {
   width: 64px;
@@ -45,7 +42,6 @@
   text-transform: uppercase;
 
   text-overflow: ellipsis;
-
 }
 .popular-name::-webkit-scrollbar {
   width: 8px; /* Ширина скроллбара */
@@ -61,7 +57,6 @@
   gap: 24px;
 }
 .popular-description {
-
   height: 35px;
 
   overflow-y: scroll;
@@ -71,14 +66,12 @@
   font-size: 12px;
   line-height: 1.33;
 
-
   overflow: hidden;
 
   /* Скрыть колесо прокрутки */
   scrollbar-width: none; /* Для Firefox */
   -ms-overflow-style: none; /* Для IE и Edge */
   -webkit-line-clamp: 3; /* Ограничиваем количество строк до 3 */
-
 }
 
 .popular-description::-webkit-scrollbar {
@@ -97,8 +90,6 @@
     width: 176px;
   }
   .filters-form {
-
-
   }
   .filters-main-box {
   }
@@ -115,6 +106,24 @@
     height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
 
+@media screen and (min-width: 1280px) {
+  .popular-container {
+    width: 235px;
+  }
+
+  .popular-heading {
+    font-size: 24px;
+  }
+
+  .popular-name {
+    font-size: 14px;
+    width: 155px;
+  }
+
+  .popular-box-text {
+    width: 155px;
   }
 }
