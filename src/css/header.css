@@ -53,6 +53,9 @@ color: var(--accent-color);
     stroke: var(--main-color);
     transition: stroke var(--trans);
 }
+.dark .header-icon-burger{
+    stroke: var(--white-color);
+}
 
 .header-icon-burger:hover,
 .header-icon-burger:focus {
@@ -63,6 +66,10 @@ color: var(--accent-color);
     stroke: var(--main-color);
     fill: var(--boody-bg);
     transition: stroke var(--trans);
+}
+.dark .header-icon-order-basket{
+    stroke: var(--white-color);
+    fill: var(--dark-boody-bg);
 }
 
 .header-icon-order-basket:hover,
@@ -255,6 +262,9 @@ letter-spacing: -0.72px;
 
 .header-wrap {
 margin-left: 0;
+}
+.activ .header-nav {
+  color: var(--accent-color);
 }
 
 .header-icon-order-basket {

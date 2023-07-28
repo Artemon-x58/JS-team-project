@@ -15,7 +15,9 @@ body {
   font-size: 14px;
   background-color: var(--boody-bg);
 }
-
+.dark body{
+    background-color: var(--dark-boody-bg);
+}
 /* Reset styles */
 h1,
 h2,
@@ -26,19 +28,33 @@ h6,
 p {
   margin: 0;
 }
-
+.dark h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    color:  var(--dark-description-font-color) ;
+  }
 ul,
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
+.dark ul,
+ol{
+    color:  var(--dark-description-font-color) ;
+  }
 a {
   color: currentColor;
   text-decoration: none;
   outline: transparent;
 }
+.dark a{
+    color:  var(--dark-description-font-color) ;
+  }
 
 button {
   font-family: inherit;

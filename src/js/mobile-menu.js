@@ -41,3 +41,32 @@ linkHome.addEventListener("click", e => {
 linkFavorites.addEventListener("click", e => {
   linkFavorites.classList.add("active-link")
 })
+
+     function addDarkTheme() {
+       if (localStorage.getItem('theme') === 'dark') {
+         document.querySelector('html').classList.add('dark');
+       } else {
+         document.querySelector('html').classList.remove('dark');
+       }
+       
+     }
+
+     document.querySelector('.checkbox-btn').addEventListener('change', e => {
+       e.preventDefault();
+       if (localStorage.getItem('theme') === 'dark') {
+         localStorage.removeItem('theme');
+       } else {
+         localStorage.setItem('theme', 'dark');
+       }
+
+       Promise.resolve()
+         .then(addDarkTheme)
+         .catch(err => {
+           console.error(err);
+         });
+     });
+
+    
+addDarkTheme();
+     
+
