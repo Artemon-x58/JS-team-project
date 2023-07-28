@@ -30,7 +30,7 @@ const swiper = new Swiper('.swiper-container', {
  
     spaceBetween: 20,
     spaceBetween: 10,
-
+// loop: true,
     pagination: {
         el: '.swiper-pagination',
         clickable: true,

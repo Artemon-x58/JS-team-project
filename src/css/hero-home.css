@@ -190,12 +190,12 @@
     gap: 30px;
   }
   .hero-slider .swiper-pagination {
-    left: 63%;
-    bottom: 180px;
+    left: 59%;
+    /* bottom: 180px; */
     /* transform: translateX(225px); */
     width: 100px;
-    margin-left: auto;
-    display: block;
+    /* margin-left: auto; */
+    /* display: block; */
   }
   .hero-cont-text {
     margin-top: auto;
