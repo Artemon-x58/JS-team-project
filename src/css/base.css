@@ -27,26 +27,32 @@ h5,
 h6,
 p {
   margin: 0;
+
 }
 .dark h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p{
-    color:  var(--dark-description-font-color) ;
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6
+{
+    color:  var(--white-color) ;
   }
+
+
+.dark p{
+  color: var(--dark-description-font-color);
+}
 ul,
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.dark ul,
+/* .dark ul,
 ol{
     color:  var(--dark-description-font-color) ;
-  }
+  } */
 a {
   color: currentColor;
   text-decoration: none;
