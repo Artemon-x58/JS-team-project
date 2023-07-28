@@ -94,7 +94,10 @@
 }
 
 .favorit-gallary-null {
-  bottom: -50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -106,7 +109,7 @@
 
 .text-nothing {
   margin: 0 auto;
-  max-width: 335px;
+  width: 335px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -141,6 +144,11 @@
   }
 
   .favorit-gallary-null {
+    position: initial;
+    top: initial;
+    left: initial;
+    transform: initial;
+    font-size: 16px;
     margin-top: 64px;
   }
 

@@ -13,20 +13,6 @@ const mediaQuery = window.matchMedia(
   '(min-width: 768px) and (max-width: 1280px)'
 );
 
-function handleMediaQueryChange(event) {
-  if (event.matches) {
-    heroImg.classList.remove('visually-hidden');
-  } else if (window.matchMedia('(min-width: 1280px)').matches) {
-    heroImg.classList.remove('visually-hidden');
-  } else {
-    heroImg.classList.add('visually-hidden');
-  }
-}
-
-mediaQuery.addListener(handleMediaQueryChange);
-
-handleMediaQueryChange(mediaQuery);
-
 gallaryNull.classList.add('visually-hidden');
 
 buildGallery();
@@ -35,6 +21,18 @@ function buildGallery() {
   galleryListEl.innerHTML = createRecipeContainers(parsedRecipes);
 
   if (galleryListEl.children.length === 0) {
+    function handleMediaQueryChange(event) {
+      if (event.matches) {
+        heroImg.classList.remove('visually-hidden');
+      } else if (window.matchMedia('(min-width: 1280px)').matches) {
+        heroImg.classList.remove('visually-hidden');
+      } else {
+        heroImg.classList.add('visually-hidden');
+      }
+    }
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);
+
     gallaryFull.classList.add('visually-hidden');
     gallaryNull.classList.remove('visually-hidden');
   }
