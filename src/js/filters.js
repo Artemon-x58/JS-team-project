@@ -504,6 +504,7 @@ addBtnModal.addEventListener("click", (e) => {
     Notiflix.Notify.warning('Warning! The recipe is already in favorites.');
   } else {
     axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes/${modalRecipeBtnFavorites.id}`).then((res) => {
+      Notiflix.Notify.success('Success! Your recipe has been added to favorites!');
       const newObj = {
         _id: res.data._id,
         title: res.data.title,
@@ -518,20 +519,24 @@ addBtnModal.addEventListener("click", (e) => {
       
       iconsHeartActive.forEach( icon => {
         if(icon.parentNode.id === modalRecipeBtnFavorites.id) {
-          icon.style.fill = "var(--boody-bg)";
+          icon.classList.add("filters-icon-heart-toggle");
         }
       })
+    }).catch(err => {
+      Notiflix.Notify.failure('Oops, something went wrong!');
     });
   }
 });
 
 contParentCard.addEventListener("click", e => {
   if( e.target.tagName !== "use" ) {
+    
 return
   }
+  console.log(e.target.parentNode)
   const svgHeart = e.target.parentNode;
   svgHeart.classList.toggle("filters-icon-heart-toggle")
-
+  
   const parentSvgHeart = svgHeart.parentNode;
 const iconHeart = parentSvgHeart.querySelector(".filters-icon-heart");
 const titleCard = parentSvgHeart.querySelector(".filters-title-recipe");
@@ -549,13 +554,14 @@ const urlForPreview = parentSvgHeart.style.backgroundImage;
   }
   
   if(svgHeart.classList.contains("filters-icon-heart-toggle")) {
-    
+    Notiflix.Notify.success('Success! Your recipe has been added to favorites!');
     const isRecipeAlreadyAdded = favoritiesRecipes.some(item => item._id === parentSvgHeaartData._id);
     if (!isRecipeAlreadyAdded) {
       favoritiesRecipes.push(parentSvgHeaartData);
       localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes));
     }
   } else {
+    Notiflix.Notify.success('Success! You have removed this recipe from favorites!');
     favoritiesRecipes = favoritiesRecipes.filter(item => item._id !== parentSvgHeaartData._id);
     localStorage.setItem('favoritiesRecipes', JSON.stringify(favoritiesRecipes))
   }
