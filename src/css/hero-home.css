@@ -27,8 +27,10 @@
   transition: background-color var(--trans), color var(--trans);
 
   }
- 
-}
+  .dark .hero-btn {
+    color: var(--white-color);
+  }
+
 
 .hero-btn:hover,
 .hero-btn:focus {
