@@ -1,206 +1,198 @@
 .hero-heading {
   margin-bottom: 14px;
-  
+
   font-size: 26px;
-  
+
   font-weight: 400;
   line-height: 1.2;
   text-transform: uppercase;
-  }
-  .hero-span {
-      font-style: italic;
-      color: var(--accent-color);
-  }
-  .hero-text {
+}
+.hero-span {
+  font-style: italic;
+  color: var(--accent-color);
+}
+.hero-text {
   margin-bottom: 28px;
-  
-      line-height: 1.28;
-  }
-  .hero-btn {
-      margin-bottom: 48px;
-      min-width: 111px;
-      height: 37px;
-      border-radius: 12px;
+
+  line-height: 1.28;
+}
+.hero-btn {
+  margin-bottom: 48px;
+  min-width: 111px;
+  height: 37px;
+  border-radius: 12px;
   border: 1px solid var(--accent-color);
   padding: 10px 20px;
   background-color: transparent;
   transition: background-color var(--trans), color var(--trans);
+
   }
-  .dark .hero-btn {
-    color: var(--white-color);
-  }
-  
-  .hero-btn:hover,
-  .hero-btn:focus {
-      background-color: var(--accent-color);
-      color: var(--boody-bg);
-  
-  }
-  
-  /* ------------------------------------------------------------swiper */
-  
-  
-  .hero-slider.swiper-container {
-      overflow: hidden;
-  }
-  
-  .hero-slider img {
-      max-width: 100%;
-  }
-  
-  .img-slider.swiper-slide {
-      display: flex;
-      /* min-width: 0; */
-      gap: 8px;
-      overflow: hidden;
-  }
-  
-  .image-slider_image {
-      text-align: center;
-  }
-  
-  .title {
-      color: rgba(248, 248, 248, 0.60);
+ 
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+  background-color: var(--accent-color);
+  color: var(--boody-bg);
+}
+
+/* ------------------------------------------------------------swiper */
+
+.hero-slider.swiper-container {
+  overflow: hidden;
+}
+
+.hero-slider img {
+  max-width: 100%;
+}
+
+.img-slider.swiper-slide {
+  display: flex;
+  /* min-width: 0; */
+  gap: 8px;
+  overflow: hidden;
+}
+
+.image-slider_image {
+  text-align: center;
+}
+
+.title {
+  color: rgba(248, 248, 248, 0.6);
+
   text-align: center;
   font-size: 10px;
   font-weight: 500;
   line-height: 1.4;
   text-transform: uppercase;
   margin-bottom: 8px;
-  }
-  
-  .country {
-      color: rgba(248, 248, 248, 0.20);
+}
+
+.country {
+  color: rgba(248, 248, 248, 0.2);
   text-align: center;
   font-size: 8px;
   line-height: 1.5;
-  
-  }
-  
-  .img-slider-one {
+}
+
+.img-slider-one {
   width: 80px;
   height: 280px;
   /* overflow: hidden; */
   background: #050505;
-  
+
   border-radius: 15px;
-  border: 1px solid rgba(155, 181, 55, 0.30);
-  }
-  
-  .img-slider-two {
+  border: 1px solid rgba(155, 181, 55, 0.3);
+}
+
+.img-slider-two {
   width: 200px;
   height: 280px;
   /* overflow: hidden; */
   background: #050505;
   padding-top: 222px;
-  
+
   border-radius: 15px;
-  border: 1px solid rgba(155, 181, 55, 0.30);
-  
-  }
-  
-  .img-slider-three {
-      width: 200px;
-      height: 280px;
-      /* overflow: hidden; */
-      background: #050505;
-      border-radius: 15px;
-  border: 1px solid rgba(155, 181, 55, 0.30);
-  }
-  
-  .hero-slider .swiper-pagination {
+  border: 1px solid rgba(155, 181, 55, 0.3);
+}
+
+.img-slider-three {
+  width: 200px;
+  height: 280px;
+  /* overflow: hidden; */
+  background: #050505;
+  border-radius: 15px;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+}
+
+.hero-slider .swiper-pagination {
   bottom: unset;
   padding-top: 20px;
+}
+
+.hero-slider .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  line-height: 0.72;
+  font-size: 24px;
+  background-color: #000;
+  opacity: 1;
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.hero-slider .swiper-slide {
+  width: auto;
+}
+[aria-label='Go to slide 4'] {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-heading {
+    margin-bottom: 16px;
+    width: 446px;
+    font-weight: 600;
+    font-size: 36px;
   }
-  
-  .hero-slider .swiper-pagination-bullet {
-      width: 8px;
-      height: 8px;
-      line-height: 0.72;
-      font-size: 24px;
-      background-color: #000;
-      opacity: 1;
-  
+
+  .hero-text {
+    width: 408px;
+    margin-bottom: 32px;
+
+    font-size: 16px;
+    line-height: 1.5;
   }
-  
-  .hero-slider .swiper-pagination-bullet-active {
-      background-color: var(--accent-color);
+
+  .hero-btn {
+    margin-bottom: 64px;
+    padding: 14px 28px;
+    min-width: 127px;
+    height: 45px;
   }
-  
-  .hero-slider .swiper-slide {
-      width: auto;
+  .img-slider-one {
+    width: 135px;
+    height: 442px;
   }
-  [aria-label="Go to slide 4"] {
-      display: none;
-    }
-  
-  
-  @media screen and (min-width: 768px) {
-      .hero-heading {
-          margin-bottom: 16px;
-         width: 446px;
-  
-          font-size: 36px;
-      }
-  
-      .hero-text {
-  width: 408px;
-  margin-bottom: 32px;
-  
-          font-size: 16px;
-          line-height: 1.5;
-      }
-      
-      .hero-btn {
-          margin-bottom: 64px;
-          padding: 14px 28px;
-          min-width: 127px;
-          height: 45px;
-      }
-      .img-slider-one {
-          width: 135px;
-          height: 442px;
-      }
-  
-      .img-slider-two {
-          width: 351px;
-          height: 442px;
-          padding-top: 370px;
-      }
-      .img-slider-three {
-          width: 351px;
-          height: 442px;
-      }
-      .title {
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.28;
-      }
-      .country {
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 1.16;
-      }
-      .img-slider.swiper-slide{
-      gap: 16px;
-      }
-      
+
+  .img-slider-two {
+    width: 351px;
+    height: 442px;
+    padding-top: 370px;
   }
-  
-  @media screen and (min-width: 1280px) {
-      .container.hero-container {
-          display: flex;
-          gap: 30px;
-      }
-      .hero-slider .swiper-pagination{
-         /* left: 20%; */
-          /* bottom: 100px; */
-          transform: translateX(225px);
-  
-      }
-      .hero-cont-text {
-          margin-top: auto;
-          margin-bottom: auto;
-      }
-  
+  .img-slider-three {
+    width: 351px;
+    height: 442px;
   }
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
+  }
+  .country {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.16;
+  }
+  .img-slider.swiper-slide {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container.hero-container {
+    display: flex;
+    gap: 30px;
+  }
+  .hero-slider .swiper-pagination {
+    /* left: 20%; */
+    /* bottom: 100px; */
+    transform: translateX(225px);
+  }
+  .hero-cont-text {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

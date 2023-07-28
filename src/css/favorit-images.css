@@ -10,6 +10,19 @@
   --dark-description-font-color: rgba(255, 255, 255, 0.8);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .categories-gallery {
   display: flex;
   flex-direction: column;
@@ -17,6 +30,9 @@
 }
 
 .grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 335px;
   height: 335px;
   padding: 16px;
@@ -67,9 +83,21 @@
   background: rgba(5, 5, 5, 0.18);
 }
 
+.favorit-icon-heart {
+  margin-left: auto;
+  display: block;
+  cursor: pointer;
+  fill: var(--boody-bg);
+  stroke: var(--boody-bg);
+  width: 22px;
+  height: 22px;
+}
+
 .favorit-gallary-null {
-  margin-top: 64px;
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -81,8 +109,7 @@
 
 .text-nothing {
   margin: 0 auto;
-  text-align: center;
-  max-width: 335px;
+  width: 335px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -117,6 +144,11 @@
   }
 
   .favorit-gallary-null {
+    position: initial;
+    top: initial;
+    left: initial;
+    transform: initial;
+    font-size: 16px;
     margin-top: 64px;
   }
 
