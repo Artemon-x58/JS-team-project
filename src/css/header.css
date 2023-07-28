@@ -255,6 +255,9 @@ letter-spacing: -0.64px;
     line-height: 20px;
 letter-spacing: -0.72px;
 }
+.header-logo-acent{
+    color: var(--accent-color);
+}
 
 .header-wrap {
 margin-left: 0;
