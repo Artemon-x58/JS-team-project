@@ -16,3 +16,4 @@ import './js/modal-order';
 import './js/filters';
 import './js/modal-recipe';
 
+import './js/to-top-button';
