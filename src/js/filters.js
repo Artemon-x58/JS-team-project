@@ -4,7 +4,7 @@ import Pagination from 'tui-pagination';
 import { BackendAPI } from './tasty-backend-api';
 import linkIcons from "../img/symbol-defs.svg"
 import axios from "axios";
-
+import Notiflix from 'notiflix';
 
 const backendReturnDataFiltersForm = new BackendAPI();
 
@@ -15,7 +15,7 @@ const categories = res.data;
         makeMurkup(category.name)
     });
 }).catch((error) => {
-  console.error("Произошла ошибка при запросе:", error);
+  Notiflix.Notify.failure('Oops, something went wrong!');
 });
 
 const gallery = document.querySelector(".categories-wrapper")
@@ -43,7 +43,7 @@ backendReturnDataFiltersForm.searchAreas().then(res => {
         createOptionsArea(_id, name)
     })
 }).catch((error) => {
-  console.error("Произошла ошибка при запросе:", error);
+  Notiflix.Notify.failure('Oops, something went wrong!');
 });
 
 function createOptionsArea (id, name) {
@@ -60,7 +60,7 @@ backendReturnDataFiltersForm.searchingredients().then(res => {
         createOptionsIngredients(_id, name)
     })
 }).catch((error) => {
-  console.error("Произошла ошибка при запросе:", error);
+  Notiflix.Notify.failure('Oops, something went wrong!');
 });
 
 function createOptionsIngredients (id, name) {
@@ -117,12 +117,12 @@ function madeFirstPagination (quantity, newTotalItems, newItemsPerPage) {
               createRecipeContainers(1, _id, title, description, rating, preview, category);
           })
       }).catch(error => {
-          console.error('Произошла ошибка при запросе:', error);
+        Notiflix.Notify.failure('Oops, something went wrong!');
       });
 
     });
   }).catch((error) => {
-    console.error("Произошла ошибка при запросе:", error);
+    Notiflix.Notify.failure('Oops, something went wrong!');
   });
 }
 
@@ -162,7 +162,7 @@ iconsHeartActive.forEach(icon => {
   makeHeartActive(icon.parentNode.id, icon)
 })
 }).catch(error => {
-    console.error('Произошла ошибка при запросе:', error);
+  Notiflix.Notify.failure('Oops, something went wrong!');
 });
 }
 
@@ -282,7 +282,7 @@ iconsHeartActive.forEach(icon => {
 })
     })
   }).catch((error) => {
-    console.error("Произошла ошибка при запросе:", error);
+    Notiflix.Notify.failure('Oops, something went wrong!');
   });
 };
 
@@ -319,7 +319,7 @@ iconsHeartActive.forEach(icon => {
 })
     })
   }).catch((error) => {
-    console.error("Произошла ошибка при запросе:", error);
+    Notiflix.Notify.failure('Oops, something went wrong!');
   });
 })
 
@@ -358,7 +358,7 @@ iconsHeartActive.forEach(icon => {
 })
     })
   }).catch((error) => {
-    console.error("Произошла ошибка при запросе:", error);
+    Notiflix.Notify.failure('Oops, something went wrong!');
   });
   
 });
@@ -396,7 +396,7 @@ iconsHeartActive.forEach(icon => {
 })
     })
   }).catch((error) => {
-    console.error("Произошла ошибка при запросе:", error);
+    Notiflix.Notify.failure('Oops, something went wrong!');
   });
   
 })
@@ -428,7 +428,7 @@ iconsHeartActive.forEach(icon => {
 })
       })
     }).catch((error) => {
-      console.error("Произошла ошибка при запросе:", error);
+      Notiflix.Notify.failure('Oops, something went wrong!');
     });
   } else {
     backendReturnDataFiltersForm.page = 1;
@@ -450,7 +450,7 @@ iconsHeartActive.forEach(icon => {
 })
       })
     }).catch((error) => {
-      console.error("Произошла ошибка при запросе:", error);
+      Notiflix.Notify.failure('Oops, something went wrong!');
     });
   }
 }, 500)
@@ -480,7 +480,7 @@ addBtnModal.addEventListener("click", (e) => {
   const recipeExists = dataArray.some(({ _id }) => _id === modalRecipeBtnFavorites.id);
 
   if (recipeExists) {
-    console.log("Рецепт уже в избранных");
+    Notiflix.Notify.warning('Warning! The recipe is already in favorites.');
   } else {
     axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes/${modalRecipeBtnFavorites.id}`).then((res) => {
       const newObj = {
